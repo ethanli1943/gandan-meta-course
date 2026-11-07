@@ -491,6 +491,13 @@ input[type=range]{accent-color:var(--brand)}
 .vid-lab span:last-child{text-align:right}
 .vid-btn{align-self:flex-start;font:inherit;font-size:12.5px;padding:5px 14px;border-radius:999px;border:1px solid var(--glass-line);background:var(--glass-strong);color:var(--ink);cursor:pointer}
 @media (prefers-reduced-motion: reduce){ .demo.draw .room .ln{animation:none!important} }
+
+/* §1 layer table */
+.layer-tbl td:first-child{font-weight:500}
+.layer-tbl td:nth-child(2){white-space:nowrap}
+.ly{display:inline-block;font-size:12px;font-weight:700;color:#fff;padding:1px 9px;border-radius:999px;background:var(--grad-brand)}
+.ly.out{background:linear-gradient(120deg,#3A2620,#5A3A2E)}
+.layer-tbl small{display:block;font-size:11px;color:var(--ink-2);margin-top:2px}
 </style>
 </head>
 <body>
@@ -614,15 +621,19 @@ input[type=range]{accent-color:var(--brand)}
       <li>可以在「預約」目標的素材裡用手法讓人也看完影片，但目標本身不能貪心，系統做不到同時要預約、曝光又要看完。</li>
     </ul>
   </div>
-  <h3>問題出在哪一層？點一個狀況試試</h3>
-  <div class="picker" id="picker" role="group" aria-label="選擇遇到的狀況">
-    <button class="pbtn" type="button" data-s="0" aria-pressed="false">想要預約，卻得到很多讚</button>
-    <button class="pbtn" type="button" data-s="1" aria-pressed="false">收到服務區域外的詢問</button>
-    <button class="pbtn" type="button" data-s="2" aria-pressed="false">花費超出原先理解</button>
-    <button class="pbtn" type="button" data-s="3" aria-pressed="false">有曝光，卻很少點擊</button>
-    <button class="pbtn" type="button" data-s="4" aria-pressed="false">有詢問，卻很少成交</button>
+  <h3>問題出在哪一層？遇到狀況先查這裡</h3>
+  <div class="body">
+    <div class="tbl"><table class="layer-tbl">
+      <thead><tr><th>遇到的情況</th><th>先查哪一層</th><th>檢查什麼</th></tr></thead>
+      <tbody>
+        <tr><td>想要預約，卻得到很多讚</td><td><span class="ly">廣告活動</span></td><td>目標設錯了：讚、留言、分享屬於「互動」目標</td></tr>
+        <tr><td>收到服務區域外的詢問</td><td><span class="ly">廣告群組</span></td><td>地區與擴展選項；素材與表單有沒有寫清楚服務地點</td></tr>
+        <tr><td>花費超出原先理解</td><td><span class="ly">廣告群組</span></td><td>預算層級、預算類型（每日或總額）、投放期間</td></tr>
+        <tr><td>有曝光，卻很少點擊</td><td><span class="ly">廣告</span><small>再看群組</small></td><td>素材、主張、優惠；再看受眾與版位</td></tr>
+        <tr><td>有詢問，卻很少成交</td><td><span class="ly out">不在廣告後台</span></td><td>名單品質、價格、回覆速度與預約流程</td></tr>
+      </tbody>
+    </table></div>
   </div>
-  <p class="answer" id="answer" aria-live="polite">選一個狀況，上方三層會標出優先檢查的位置。</p>
   <div class="body">
     <ul>
       <li>跨區詢問不一定是設定錯：台灣 GPS 定位相對不準，加上很多人用 VPN，投林口卻收到板橋、內湖的詢問很常見。</li>
