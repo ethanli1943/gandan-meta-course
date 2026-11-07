@@ -406,6 +406,91 @@ input[type=range]{accent-color:var(--brand)}
   .tool,.callout,.funnel,.plan-list,.sum-list,.check,.qa,.stat-row,.layers,.quote,.tbl{background:var(--surface)}
 }
 @media (prefers-reduced-motion: reduce){ .ambient i,.hero::before{animation:none!important} }
+
+/* ===== §4 素材示範卡 ===== */
+.demo{background:var(--glass);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);border:1px solid var(--glass-line);border-radius:18px;box-shadow:var(--glass-shadow);padding:16px;display:flex;flex-direction:column;gap:14px}
+.demo-tt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;align-self:flex-start}
+
+/* ad anatomy */
+.phone{align-self:center;width:100%;max-width:340px;border-radius:26px;padding:10px;background:linear-gradient(160deg,#2E1E19,#1C1311);box-shadow:0 20px 40px -22px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12)}
+.ad{background:#FBFAF9;color:#231815;border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:10px}
+.ad-el{position:relative;border-radius:10px;transition:opacity .45s,box-shadow .45s,transform .45s;cursor:pointer}
+.ad.focus .ad-el{opacity:.38}
+.ad.focus .ad-el.on{opacity:1;box-shadow:0 0 0 2px #A74A2D,0 10px 24px -14px rgba(167,74,45,.7);transform:scale(1.015)}
+.hot{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--f-num);font-size:11px;font-weight:600;color:#fff;background:linear-gradient(135deg,#8E3B22,#C9805F);box-shadow:0 0 0 3px rgba(201,128,95,.25)}
+.ad-el.on .hot{animation:hotPulse 1.2s ease-in-out infinite}
+@keyframes hotPulse{50%{box-shadow:0 0 0 7px rgba(201,128,95,0)}}
+.ad-head{display:flex;gap:10px;align-items:center;padding:4px}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:15px;color:#fff;background:linear-gradient(135deg,#231815,#5A3A2E)}
+.ad-head b{display:block;font-size:14px;line-height:1.3}
+.ad-head small{font-size:11px;color:#6A615D}
+.ad-copy{font-size:13.5px;line-height:1.65;padding:4px}
+.ad-visual{aspect-ratio:16/10;max-width:100%;overflow:hidden;background:linear-gradient(160deg,#F3E6DC 0%,#E9D3C3 55%,#D9B9A3 100%)}
+.room{position:absolute;inset:0;width:100%;height:100%}
+.room .ln{fill:none;stroke:#3A2A24;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:600;stroke-dashoffset:0}
+.room .fill{fill:rgba(255,255,255,.55)}
+.room .accent{fill:#C9805F;stroke:#3A2A24}
+.room .leaf{fill:#8FA58F}
+.demo.draw .room .ln{animation:roomDraw 2.2s cubic-bezier(.6,0,.2,1) both}
+@keyframes roomDraw{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}
+.ad-chip{position:absolute;left:10px;bottom:10px;font-size:11px;color:#fff;padding:2px 10px;border-radius:999px;background:rgba(35,24,21,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.ad-row{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.ad-title{flex:1;min-width:0;padding:4px}
+.ad-title small{display:block;font-size:10px;letter-spacing:.06em;color:#6A615D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ad-title b{font-size:13.5px}
+.ad-cta{flex:0 0 auto;font-size:13px;font-weight:700;color:#fff;padding:7px 14px;border-radius:8px;background:linear-gradient(120deg,#8E3B22,#A74A2D 45%,#C9805F)}
+.ad-dest{font-size:12px;color:#6A615D;padding:6px 8px;background:#F1ECE8}
+.ad-dest span{color:#A74A2D;font-weight:700}
+.demo-steps{display:flex;flex-wrap:wrap;gap:6px}
+.demo-steps button{font:inherit;font-size:12.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--glass-line);background:var(--glass-strong);color:var(--ink);cursor:pointer;transition:background .3s,color .3s}
+.demo-steps button[aria-pressed="true"]{background:var(--grad-brand);color:#fff;border-color:transparent}
+.demo-say{font-size:14.5px;min-height:3.3em;padding-left:14px;border-left:2px solid var(--brand)}
+
+/* carousel */
+.car{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 2px 6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.car::-webkit-scrollbar{display:none}
+.cc{position:relative;flex:0 0 74%;max-width:280px;scroll-snap-align:start;border-radius:14px;background:var(--glass-strong);border:1px solid var(--glass-line);padding:10px 10px 12px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--glass-shadow)}
+.cc.key{box-shadow:0 0 0 1.5px var(--brand),var(--glass-shadow)}
+.cc-tag{position:absolute;top:-9px;left:12px;z-index:2;font-style:normal;font-size:10.5px;letter-spacing:.06em;color:#fff;padding:1px 9px;border-radius:999px;background:var(--grad-brand)}
+.cc:nth-child(n+4) .cc-tag{background:linear-gradient(120deg,#3A2620,#5A3A2E)}
+.cc-img{position:relative;aspect-ratio:4/3;max-width:100%;border-radius:10px;overflow:hidden;background:linear-gradient(160deg,#F3E6DC,#DCC0AC)}
+.cc-img.alt{background:linear-gradient(160deg,#E7E5E3,#C9C2BC)}
+.cc-img .person{position:absolute;left:6%;bottom:0;width:46%;height:auto;fill:#231815;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+.cc-img.flow{display:grid;grid-template-columns:repeat(4,1fr);align-items:center;gap:4px;padding:10px;background:linear-gradient(160deg,#2E1E19,#1C1311)}
+.cc-img.flow span{position:relative;text-align:center;font-size:12px;color:#F2E6DF;padding:8px 0;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(255,255,255,.06)}
+.cc-img.form{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:14px;background:linear-gradient(160deg,#F4E9E2,#E8D5C8)}
+.cc-img.form .fld{height:16px;border-radius:5px;background:rgba(255,255,255,.85);border:1px solid #D8C3B5}
+.cc-img.form .btn{align-self:flex-start;font-size:12px;font-weight:700;color:#fff;padding:5px 12px;border-radius:7px;background:linear-gradient(120deg,#8E3B22,#C9805F)}
+.cc b{display:flex;align-items:center;gap:8px;font-size:15px}
+.cc b span{font-family:var(--f-num);font-weight:300;font-size:22px;line-height:1;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cc small{font-size:12.5px;color:var(--ink-2);line-height:1.6}
+.car-dots{display:flex;justify-content:center;gap:6px}
+.car-dots i{width:6px;height:6px;border-radius:999px;background:var(--line);transition:width .35s,background .35s}
+.car-dots i.on{width:20px;background:var(--brand)}
+
+/* video timeline */
+.vid{display:flex;flex-direction:column;gap:8px}
+.vid-screen{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:14px;overflow:hidden;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;color:#F7EEE8;background:
+  radial-gradient(70% 70% at 80% 10%,rgba(196,98,60,.55),transparent 70%),linear-gradient(160deg,#2E1E19,#1C1311)}
+.vid-screen b{font-size:16px}
+.vid-screen small{font-size:13px;color:#D9C7BC}
+.vid-screen small.in{animation:subIn .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes subIn{from{transform:translateY(8px);opacity:0}}
+.vid-sec{position:absolute;top:12px;left:14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;padding:1px 8px;border-radius:999px;background:rgba(255,255,255,.12);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.vid-cta{position:absolute;right:14px;bottom:16px;font-size:12px;font-weight:700;padding:5px 12px;border-radius:8px;color:#fff;background:linear-gradient(120deg,#A74A2D,#C9805F);opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}
+.vid-cta.on{opacity:1;transform:none}
+.vid-bar{position:relative;display:flex;height:8px;border-radius:999px;overflow:visible;background:var(--stone)}
+.vid-bar .sg{display:block;height:100%}
+.sg1{width:16.7%;border-radius:999px 0 0 999px;background:#C9805F}
+.sg2{width:63.3%;background:linear-gradient(90deg,#B8603F,#A74A2D)}
+.sg3{width:20%;border-radius:0 999px 999px 0;background:#5A3A2E}
+.vid-head{position:absolute;top:50%;left:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px var(--brand),0 2px 6px rgba(0,0,0,.3)}
+.vid-lab{display:grid;grid-template-columns:16.7% 63.3% 20%;font-size:11px;line-height:1.45;color:var(--ink-2);font-family:var(--f-mono)}
+.vid-lab span{white-space:nowrap}
+.vid-lab span:nth-child(2){padding-left:6px}
+.vid-lab span:last-child{text-align:right}
+.vid-btn{align-self:flex-start;font:inherit;font-size:12.5px;padding:5px 14px;border-radius:999px;border:1px solid var(--glass-line);background:var(--glass-strong);color:var(--ink);cursor:pointer}
+@media (prefers-reduced-motion: reduce){ .demo.draw .room .ln{animation:none!important} }
 </style>
 </head>
 <body>
@@ -432,7 +517,7 @@ input[type=range]{accent-color:var(--brand)}
       <a class="chip" href="#s8">§8 代理商</a>
       <a class="chip" href="#s9">§9 漏斗</a>
       <a class="chip" href="#s10">§10 自投</a>
-      <a class="chip" href="#s11">§11 準備</a>
+      <a class="chip" href="#s11">§11 前置</a>
       <a class="chip" href="#s12">§12 檢核</a>
     </div>
   </div>
@@ -469,14 +554,14 @@ input[type=range]{accent-color:var(--brand)}
   <h2>甘丹未來方針摘要</h2>
   <p class="lead">依老師在課堂上針對甘丹的建議整理，屬於行動提案，主管確認後才算定案。點任一張卡片會跳到詳細章節。</p>
   <ol class="plan-list">
-    <li><a href="#s11"><span class="n">01</span><div><h3>下週上課前先備齊五件事</h3><p>既有客戶名單、問網站廠商有沒有裝 GA4、確認 Pixel、完成廣告帳號身分驗證、帶近期作品。</p></div><span class="go">§11</span></a></li>
-    <li><a href="#s8"><span class="n">02</span><div><h3>跟代理商重新對齊目標</h3><p>私訊／表單成本目標訂在 NT$500–600（目前約 NT$1,263）；預算快花完要事先通知；調受眾時一起提素材方向與成本目標。</p></div><span class="go">§8</span></a></li>
-    <li><a href="#s2"><span class="n">03</span><div><h3>廣告目標分三條線</h3><p>要表單投 Meta「流量」連官網表單；要 Meta 影片看完投「互動／觀看」；要 YT 長片看完改從 Google Ads 下。Meta 廣告不直接放 YouTube 連結。</p></div><span class="go">§2</span></a></li>
-    <li><a href="#s4"><span class="n">04</span><div><h3>素材量要變多</h3><p>拍長片時順便規劃投廣專用片段；影片壓在 30 秒內；輪播第一張放「設計師＋代表案場」。</p></div><span class="go">§4</span></a></li>
-    <li><a href="#s6"><span class="n">05</span><div><h3>追蹤做完整</h3><p>每支影片 × 每個平台各用一條追蹤連結；Pixel 交給網站廠商埋；LINE 加好友連結也加追蹤。</p></div><span class="go">§6</span></a></li>
-    <li><a href="#s9"><span class="n">06</span><div><h3>補漏斗中段：LINE OA</h3><p>推播改丟精彩片段與熱門風格案例。要衝的兩個數字：表單填單數、LINE 加好友數。</p></div><span class="go">§9</span></a></li>
-    <li><a href="#s7"><span class="n">07</span><div><h3>成效改看季度 ROAS</h3><p>營收用淨利算，不看單月；三個月零成交就要警覺。</p></div><span class="go">§7</span></a></li>
-    <li><a href="#s10"><span class="n">08</span><div><h3>自己投先試三到六個月</h3><p>社群經營主控權留在甘丹手上，真的卡關再把廣告操作外包。</p></div><span class="go">§10</span></a></li>
+    <li><a href="#s8"><span class="n">01</span><div><h3>跟代理商重新對齊目標</h3><p>私訊／表單成本目標訂在 NT$500–600（目前約 NT$1,263）；預算快花完要事先通知；調受眾時一起提素材方向與成本目標。</p></div><span class="go">§8</span></a></li>
+    <li><a href="#s2"><span class="n">02</span><div><h3>廣告目標分三條線</h3><p>要表單投 Meta「流量」連官網表單；要 Meta 影片看完投「互動／觀看」；要 YT 長片看完改從 Google Ads 下。Meta 廣告不直接放 YouTube 連結。</p></div><span class="go">§2</span></a></li>
+    <li><a href="#s4"><span class="n">03</span><div><h3>素材量要變多</h3><p>拍長片時順便規劃投廣專用片段；影片壓在 30 秒內；輪播第一張放「設計師＋代表案場」。</p></div><span class="go">§4</span></a></li>
+    <li><a href="#s6"><span class="n">04</span><div><h3>追蹤做完整</h3><p>每支影片 × 每個平台各用一條追蹤連結；Pixel 交給網站廠商埋；LINE 加好友連結也加追蹤。</p></div><span class="go">§6</span></a></li>
+    <li><a href="#s9"><span class="n">05</span><div><h3>補漏斗中段：LINE OA</h3><p>推播改丟精彩片段與熱門風格案例。要衝的兩個數字：表單填單數、LINE 加好友數。</p></div><span class="go">§9</span></a></li>
+    <li><a href="#s7"><span class="n">06</span><div><h3>成效改看季度 ROAS（廣告投資報酬率）</h3><p>營收用淨利算，不看單月；三個月零成交就要警覺。</p></div><span class="go">§7</span></a></li>
+    <li><a href="#s10"><span class="n">07</span><div><h3>自己投先試三到六個月</h3><p>社群經營主控權留在甘丹手上，真的卡關再把廣告操作外包。</p></div><span class="go">§10</span></a></li>
+    <li><a href="#s11"><span class="n">08</span><div><h3>開始投放前先備齊五件事</h3><p>既有客戶名單、問網站廠商有沒有裝 GA4、確認 Pixel、完成廣告帳號身分驗證、整理近期作品。</p></div><span class="go">§11</span></a></li>
   </ol>
   <a class="decide" href="#s8">
     <span class="t"><span>主走表單廣告，還是曝光型廣告？</span><span class="go">§8</span></span>
@@ -497,7 +582,7 @@ input[type=range]{accent-color:var(--brand)}
     <li><a href="#s4"><span class="sec">§4</span><span class="t">單圖一個重點；輪播前三張決勝負，第一張放「人＋案場」；影片 30 秒內</span></a></li>
     <li><a href="#s5"><span class="sec">§5</span><span class="t">受眾分儲存、自訂、類似三種；用 AI 描述放大，再用排除篩掉不要的人</span></a></li>
     <li><a href="#s6"><span class="sec">§6</span><span class="t">Pixel 交網站廠商埋、UTM 自己做；追得到來源點擊，追不到「誰」成交</span></a></li>
-    <li><a href="#s7"><span class="sec">§7</span><span class="t">CPC 看點擊成本、CPA 先定義成果、ROAS 用淨利算；只看前端便宜會選錯</span></a></li>
+    <li><a href="#s7"><span class="sec">§7</span><span class="t">CPC（每次點擊成本）、CPA（每次成果成本）、ROAS（廣告投資報酬率）：成果先定義、報酬用淨利算；只看前端便宜會選錯</span></a></li>
     <li><a href="#s8"><span class="sec">§8</span><span class="t">代理商報表：CPC 約 NT$10.6、表單成本約 NT$1,263，老師認為有 40–50% 修正空間</span></a></li>
     <li><a href="#s9"><span class="sec">§9</span><span class="t">前端內容與後端諮詢都沒問題，缺的是中段信任，用 LINE OA 承接</span></a></li>
   </ul>
@@ -672,7 +757,28 @@ input[type=range]{accent-color:var(--brand)}
 <section class="section wrap" id="s4">
   <div class="sec-head"><div class="no"><b>§4</b></div><h2>廣告素材</h2><div class="dim" aria-hidden="true"><span></span></div></div>
   <div class="body">
-    <p>一則完整廣告有六個元素：刊登身分、主要文案、視覺素材、標題與補充資訊、CTA、目的地。廣告承諾要和點進去後看到的內容一致；各版位不一定顯示所有欄位，關鍵資訊直接放進素材。</p>
+    <p>一則完整廣告有六個元素。點下面的號碼看每一塊在做什麼；廣告承諾要和點進去後看到的內容一致，各版位不一定顯示所有欄位，關鍵資訊直接放進素材。</p>
+    <div class="demo" id="adDemo">
+      <div class="demo-tt">示範卡 · 一則廣告的六個元素</div>
+      <div class="phone">
+        <div class="ad">
+          <div class="ad-el ad-head" data-e="1"><span class="av">甘</span><div><b>甘丹設計</b><small>贊助 · 台中服務地區</small></div><i class="hot">1</i></div>
+          <p class="ad-el ad-copy" data-e="2">30 坪老屋翻新，怎麼留住家的溫度？這次把收納藏進每一道牆。<i class="hot">2</i></p>
+          <div class="ad-el ad-visual" data-e="3"><svg class="room" viewBox="0 0 320 200" aria-hidden="true"><rect x="196" y="26" width="92" height="96" rx="2" class="ln"/><line x1="242" y1="26" x2="242" y2="122" class="ln"/><line x1="196" y1="74" x2="288" y2="74" class="ln"/><line x1="0" y1="170" x2="320" y2="170" class="ln"/><path d="M40 168 V128 Q40 116 52 116 H160 Q172 116 172 128 V168" class="ln fill"/><path d="M40 142 H172" class="ln"/><line x1="60" y1="168" x2="56" y2="182" class="ln"/><line x1="152" y1="168" x2="156" y2="182" class="ln"/><line x1="118" y1="0" x2="118" y2="40" class="ln"/><path d="M100 56 Q118 30 136 56 Z" class="ln accent"/><path d="M300 168 V150 M292 150 H308 L304 168 H296 Z" class="ln"/><path d="M300 150 Q290 128 300 112 Q310 128 300 150" class="ln leaf"/></svg><span class="ad-chip">一張圖，一個重點</span><i class="hot">3</i></div>
+          <div class="ad-row">
+            <div class="ad-el ad-title" data-e="4"><small>WWW.GANDANDESIGN.COM.TW</small><b>北歐溫度的 30 坪新家</b><i class="hot">4</i></div>
+            <span class="ad-el ad-cta" data-e="5">立即預約<i class="hot">5</i></span>
+          </div>
+          <div class="ad-el ad-dest" data-e="6"><span>點下去 →</span> 官網諮詢表單（帶追蹤碼）<i class="hot">6</i></div>
+        </div>
+      </div>
+      <div class="demo-steps" role="group" aria-label="選擇廣告元素">
+        <button type="button" data-e="1">1 刊登身分</button><button type="button" data-e="2">2 主要文案</button><button type="button" data-e="3">3 視覺素材</button>
+        <button type="button" data-e="4">4 標題與補充</button><button type="button" data-e="5">5 行動呼籲</button><button type="button" data-e="6">6 目的地</button>
+      </div>
+      <p class="demo-say" id="adSay" aria-live="polite"></p>
+      <p class="note">示範用的假廣告，文案與標題只是舉例。</p>
+    </div>
     <div class="callout v">老師說 Meta 官方大約在今年 Q2 提到：<strong>影片和單圖（含拼圖）的觸及比較好，輪播圖變低了</strong>。下次 A/B 測試可以試。格式會輪迴，現在冷的以後可能會回來。<span class="tag tag-v">待查證</span></div>
   </div>
   <h3>單圖：一張圖，一個重點</h3>
@@ -683,7 +789,17 @@ input[type=range]{accent-color:var(--brand)}
   </ul></div>
   <h3>輪播：第一張一定是「人＋案場」 <span class="tag tag-g">甘丹</span></h3>
   <div class="body">
-    <ol><li>品牌風格（第一印象）</li><li>主要作品</li><li>設計作品（不同需求）</li><li>服務流程（降低疑慮）</li><li>預約資訊（下一步）</li></ol>
+    <div class="demo" id="carDemo">
+      <div class="demo-tt">示範卡 · 輪播五張的任務（左右滑動）</div>
+      <div class="car" id="car" tabindex="0" aria-label="輪播示範，可左右滑動">
+        <div class="cc key"><em class="cc-tag">前三張決勝負</em><div class="cc-img"><svg class="room" viewBox="0 0 320 200" aria-hidden="true"><rect x="196" y="26" width="92" height="96" rx="2" class="ln"/><line x1="242" y1="26" x2="242" y2="122" class="ln"/><line x1="196" y1="74" x2="288" y2="74" class="ln"/><line x1="0" y1="170" x2="320" y2="170" class="ln"/><path d="M40 168 V128 Q40 116 52 116 H160 Q172 116 172 128 V168" class="ln fill"/><path d="M40 142 H172" class="ln"/><line x1="60" y1="168" x2="56" y2="182" class="ln"/><line x1="152" y1="168" x2="156" y2="182" class="ln"/><line x1="118" y1="0" x2="118" y2="40" class="ln"/><path d="M100 56 Q118 30 136 56 Z" class="ln accent"/><path d="M300 168 V150 M292 150 H308 L304 168 H296 Z" class="ln"/><path d="M300 150 Q290 128 300 112 Q310 128 300 150" class="ln leaf"/></svg><svg class="person" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="44" r="20"/><path d="M20 118 Q24 78 60 76 Q96 78 100 118 Z"/></svg></div><b><span>1</span>品牌風格</b><small>第一印象｜人＋案場：設計師＋代表案場</small></div>
+        <div class="cc"><em class="cc-tag">前三張決勝負</em><div class="cc-img"><svg class="room" viewBox="0 0 320 200" aria-hidden="true"><rect x="196" y="26" width="92" height="96" rx="2" class="ln"/><line x1="242" y1="26" x2="242" y2="122" class="ln"/><line x1="196" y1="74" x2="288" y2="74" class="ln"/><line x1="0" y1="170" x2="320" y2="170" class="ln"/><path d="M40 168 V128 Q40 116 52 116 H160 Q172 116 172 128 V168" class="ln fill"/><path d="M40 142 H172" class="ln"/><line x1="60" y1="168" x2="56" y2="182" class="ln"/><line x1="152" y1="168" x2="156" y2="182" class="ln"/><line x1="118" y1="0" x2="118" y2="40" class="ln"/><path d="M100 56 Q118 30 136 56 Z" class="ln accent"/><path d="M300 168 V150 M292 150 H308 L304 168 H296 Z" class="ln"/><path d="M300 150 Q290 128 300 112 Q310 128 300 150" class="ln leaf"/></svg></div><b><span>2</span>主要作品</b><small>介紹主要款式｜代表案場的全景</small></div>
+        <div class="cc"><em class="cc-tag">前三張決勝負</em><div class="cc-img alt"><svg class="room" viewBox="0 0 320 200" aria-hidden="true"><rect x="196" y="26" width="92" height="96" rx="2" class="ln"/><line x1="242" y1="26" x2="242" y2="122" class="ln"/><line x1="196" y1="74" x2="288" y2="74" class="ln"/><line x1="0" y1="170" x2="320" y2="170" class="ln"/><path d="M40 168 V128 Q40 116 52 116 H160 Q172 116 172 128 V168" class="ln fill"/><path d="M40 142 H172" class="ln"/><line x1="60" y1="168" x2="56" y2="182" class="ln"/><line x1="152" y1="168" x2="156" y2="182" class="ln"/><line x1="118" y1="0" x2="118" y2="40" class="ln"/><path d="M100 56 Q118 30 136 56 Z" class="ln accent"/><path d="M300 168 V150 M292 150 H308 L304 168 H296 Z" class="ln"/><path d="M300 150 Q290 128 300 112 Q310 128 300 150" class="ln leaf"/></svg></div><b><span>3</span>設計作品</b><small>展示不同需求｜不同坪數、不同風格</small></div>
+        <div class="cc"><em class="cc-tag">資訊＋表單</em><div class="cc-img flow"><span>丈量</span><span>設計</span><span>施工</span><span>交屋</span></div><b><span>4</span>服務流程</b><small>降低疑慮｜丈量 → 設計 → 施工 → 交屋</small></div>
+        <div class="cc"><em class="cc-tag">資訊＋表單</em><div class="cc-img form"><span class="fld"></span><span class="fld"></span><span class="btn">填寫諮詢表單</span></div><b><span>5</span>預約資訊</b><small>說明下一步｜服務地區＋表單連結</small></div>
+      </div>
+      <div class="car-dots" id="carDots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
     <ul>
       <li>品牌還不夠有名時，第一張放老闆或代表作最多的設計師，背景是主要案場（設計師可以去背疊上去）。觀眾先認識人，才會想看作品。</li>
       <li>賣房子的廣告右下角一定有「誰在賣」；只有空間的圖會顯得空。</li>
@@ -692,10 +808,16 @@ input[type=range]{accent-color:var(--brand)}
   </div>
   <h3>影音：三段內容</h3>
   <div class="body">
-    <div class="tbl wide"><table>
-      <thead><tr><th>開頭</th><th>中段</th><th>結尾</th></tr></thead>
-      <tbody><tr><td>需求、亮點或結果（例：完成作品）</td><td>細節與信任依據（施作過程、作品細節）</td><td>清楚的下一步（地點、預約方式、服務條件）</td></tr></tbody>
-    </table></div>
+    <div class="demo" id="vidDemo">
+      <div class="demo-tt">示範卡 · 30 秒影音怎麼排</div>
+      <div class="vid">
+        <div class="vid-screen"><span class="vid-sec" id="vidSec">0:00</span><b id="vidCap">開頭：先給結果</b><small id="vidSub">完成後的客廳全景</small><span class="vid-cta" id="vidCta">立即預約</span></div>
+        <div class="vid-bar"><i class="sg sg1"></i><i class="sg sg2"></i><i class="sg sg3"></i><span class="vid-head" id="vidHead"></span></div>
+        <div class="vid-lab"><span>開頭<br>0–5s</span><span>中段<br>5–24s</span><span>結尾<br>24–30s</span></div>
+      </div>
+      <button type="button" class="vid-btn" id="vidBtn" aria-pressed="true">暫停示範</button>
+      <p class="note">秒數分配是示範，老師的原則是：開頭給需求或結果、中段給信任依據、結尾講清楚下一步，整支壓在 30 秒內。</p>
+    </div>
     <ul>
       <li><strong>投廣影片盡量壓在 30 秒內</strong>：完播率高、內容精選，廣告品質分數也比較好。參考電視廣告的秒數與節奏。</li>
       <li>一鏡到底要小心，拍不好會像房仲帶看。字幕、版位安全區、使用權、預覽都要檢查。</li>
@@ -766,13 +888,13 @@ input[type=range]{accent-color:var(--brand)}
       <li><strong>觸及</strong>是不重複看到的人數；<strong>曝光</strong>可以重複算，一人七天看三次就是三次。甘丹報表：曝光 <span class="mono">529,000</span>、觸及 <span class="mono">478,000</span>。</li>
     </ul>
   </div>
-  <h3>CPC＝花費 ÷ 連結點擊</h3>
+  <h3>CPC（每次點擊成本）＝花費 ÷ 連結點擊</h3>
   <div class="body"><ul>
     <li>先確認是「全部點擊」還是「連結點擊」。例：<span class="mono">NT$3,000 ÷ 300 次＝NT$10</span>。</li>
     <li>老師的參考值：一般 1–3 元，她自己大約做到 5–6 元；ThruPlay 單次成本希望 0.1–0.2 元。<span class="tag tag-v">待查證</span></li>
     <li>播放 500 次不等於 500 次點擊，連結點擊才能接著算多少人填表。</li>
   </ul></div>
-  <h3>CPA＝花費 ÷ 指定成果次數</h3>
+  <h3>CPA（每次成果成本）＝花費 ÷ 指定成果次數</h3>
   <div class="body">
     <div class="tbl"><table>
       <thead><tr><th>成果階段</th><th class="num">數量</th><th class="num">每次成本</th></tr></thead>
@@ -780,7 +902,7 @@ input[type=range]{accent-color:var(--brand)}
     </table></div>
     <p class="note">假設花費 NT$6,000。Meta 只算到「表單名單」；有效名單與到店要甘丹自己追蹤，再回報代理商。</p>
   </div>
-  <h3>ROAS＝歸因收益 ÷ 廣告花費 <span class="tag tag-g">甘丹</span></h3>
+  <h3>ROAS（廣告投資報酬率）＝歸因收益 ÷ 廣告花費 <span class="tag tag-g">甘丹</span></h3>
   <div class="body">
     <div class="tool" id="roas">
       <div class="tt">QUARTERLY ROAS · 用淨利算</div>
@@ -812,8 +934,8 @@ input[type=range]{accent-color:var(--brand)}
   <div class="sec-head"><div class="no"><b>§8</b> <span class="tag tag-g">甘丹</span></div><h2>現任代理商報表拆解</h2><div class="dim" aria-hidden="true"><span></span></div></div>
   <div class="body">
     <div class="stat-row">
-      <div class="stat"><small>點擊成本 CPC</small><b data-count="10.6" data-dec="1">10.6</b> <em>元／次</em></div>
-      <div class="stat"><small>表單成本 CPA</small><b data-count="1263" data-dec="0">1,263</b> <em>元／筆</em></div>
+      <div class="stat"><small>CPC（每次點擊成本）</small><b data-count="10.6" data-dec="1">10.6</b> <em>元／次</em></div>
+      <div class="stat"><small>CPA（每次成果成本）</small><b data-count="1263" data-dec="0">1,263</b> <em>元／筆</em></div>
       <div class="stat"><small>老師估的修正空間</small><b>40–50</b> <em>%</em></div>
     </div>
     <div class="gauge" id="gauge" aria-label="表單成本位置：目前約 1,263 元，目標 500 到 600 元">
@@ -938,7 +1060,7 @@ input[type=range]{accent-color:var(--brand)}
 <section class="section wrap" id="s10">
   <div class="sec-head"><div class="no"><b>§10</b> <span class="tag tag-g">甘丹</span></div><h2>自己投、代理商，還是 AI？</h2><div class="dim" aria-hidden="true"><span></span></div></div>
   <div class="body">
-    <p>老闆有考慮換掉代理商自己投。老師提醒：自己投很辛苦，而且老闆通常會想每週調整，不是一個月調一次。</p>
+    <p>公司正在評估改由內部自己投放。老師提醒：自己投需要穩定的操作人力，而且自己投時調整頻率通常會變高（例如每週檢視一次，而不是每月一次），建議先講好檢視節奏與分工。</p>
     <ol>
       <li>先自己完整操作一次（老師之後還會再來上兩次）。</li>
       <li>試三到六個月。</li>
@@ -950,7 +1072,7 @@ input[type=range]{accent-color:var(--brand)}
 
 <!-- §11 -->
 <section class="section wrap" id="s11">
-  <div class="sec-head"><div class="no"><b>§11</b></div><h2>下週實操前要準備</h2><div class="dim" aria-hidden="true"><span></span></div></div>
+  <div class="sec-head"><div class="no"><b>§11</b></div><h2>開始投放前要準備</h2><div class="dim" aria-hidden="true"><span></span></div></div>
   <div class="body">
     <p class="check-count" id="check-count">已完成 0 / 6</p>
     <div class="meter" aria-hidden="true"><i id="meter"></i></div>
@@ -959,8 +1081,8 @@ input[type=range]{accent-color:var(--brand)}
       <li><label><input type="checkbox" id="c2"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>問網站廠商</strong>：官網有沒有裝 GA4？有的話請他們提供數據檢視連結。</span></label></li>
       <li><label><input type="checkbox" id="c3"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>Pixel</strong>：確認 Meta 後台的 Pixel 狀況，之後交給網站廠商埋進官網。</span></label></li>
       <li><label><input type="checkbox" id="c4"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>帳號身分驗證</strong>：準備公司登記名稱、統編、公司電話、網站、可收信的 Email。路徑見 <a href="#s3">§3</a>。</span></label></li>
-      <li><label><input type="checkbox" id="c5"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>近期作品</strong>：帶最近的影片和素材，下週一起討論素材方向（含對標）。</span></label></li>
-      <li><label><input type="checkbox" id="c6"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>下週實操內容：新增受眾包、排除受眾，並簡單帶 YouTube（Google Ads）廣告。</span></label></li>
+      <li><label><input type="checkbox" id="c5"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>近期作品</strong>：整理最近的影片和素材，用來討論素材方向（含對標）。</span></label></li>
+      <li><label><input type="checkbox" id="c6"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>老師後續實操課會帶：新增受眾包、排除受眾，以及 YouTube（Google Ads）廣告入門。</span></label></li>
     </ul>
     <p class="note">勾選只存在你這支手機或電腦的瀏覽器裡，不會同步給其他同仁。</p>
   </div>
@@ -1194,6 +1316,81 @@ input[type=range]{accent-color:var(--brand)}
     });
   });
   count();
+
+  /* §4 creative demos */
+  const adSay = {
+    1:'<strong>刊登身分</strong>：用哪個帳號呈現。用品牌粉專，觀眾一眼知道是誰在說話。',
+    2:'<strong>主要文案</strong>：需求、價值、行動理由。前兩行就要講到重點，後面可能被折疊。',
+    3:'<strong>視覺素材</strong>：一張圖一個重點。同一個案場可以拼圖；案場照要上字，字就要好好設計。',
+    4:'<strong>標題與補充資訊</strong>：幫人快速理解。各版位不一定顯示，關鍵資訊要直接放進素材。',
+    5:'<strong>行動呼籲（CTA）</strong>：按鈕寫清楚下一步，例如「立即預約」「了解更多」。',
+    6:'<strong>目的地</strong>：點下去到哪裡。內容要和廣告承諾一致，連結要帶追蹤碼才分得出來源。'
+  };
+  const adEls = $$('#adDemo .ad-el'), adBtns = $$('#adDemo .demo-steps button');
+  let adCur = 1, adAuto = true;
+  function adShow(e){
+    adCur = e;
+    adEls.forEach(x => x.classList.toggle('on', +x.dataset.e === e));
+    adBtns.forEach(b => b.setAttribute('aria-pressed', +b.dataset.e === e));
+    $('#adDemo .ad').classList.add('focus');
+    $('#adSay').innerHTML = adSay[e];
+  }
+  adBtns.forEach(b => b.addEventListener('click', () => { adAuto = false; adShow(+b.dataset.e); }));
+  adEls.forEach(x => x.addEventListener('click', () => { adAuto = false; adShow(+x.dataset.e); }));
+  adShow(1);
+  if (!reduce) setInterval(() => { if (adAuto && !document.hidden) adShow(adCur % 6 + 1); }, 2800);
+
+  const car = $('#car'), dots = $$('#carDots i');
+  function carDot(){
+    const cards = $$('#car .cc');
+    let best = 0, bd = 1e9;
+    cards.forEach((c, i) => { const d = Math.abs(c.offsetLeft - car.scrollLeft - 0); if (d < bd){ bd = d; best = i; } });
+    dots.forEach((d, i) => d.classList.toggle('on', i === best));
+  }
+  car.addEventListener('scroll', carDot, {passive:true}); carDot();
+  if (!reduce && 'IntersectionObserver' in window){
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (!en.isIntersecting) return;
+      io.disconnect();
+      setTimeout(() => { car.scrollTo({left:car.clientWidth * .45, behavior:'smooth'}); setTimeout(() => car.scrollTo({left:0, behavior:'smooth'}), 900); }, 500);
+    }), {threshold:.6});
+    io.observe(car);
+  }
+
+  if (!reduce && 'IntersectionObserver' in window){
+    const dio = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ en.target.classList.add('draw'); dio.unobserve(en.target); } }), {threshold:.35});
+    $$('#adDemo, #carDemo').forEach(d => dio.observe(d));
+  }
+
+  const vSec = $('#vidSec'), vCap = $('#vidCap'), vSub = $('#vidSub'), vHead = $('#vidHead'), vCta = $('#vidCta'), vBtn = $('#vidBtn');
+  const scenes = [
+    [0,'開頭：先給結果','完成後的客廳全景'],
+    [5,'中段：信任依據','施作過程：木作收納現場'],
+    [12,'中段：信任依據','作品細節：材質與燈光'],
+    [18,'中段：信任依據','設計師一句話說明'],
+    [24,'結尾：下一步','服務地區＋預約方式＋服務條件']
+  ];
+  let vT = 0, vOn = !reduce, vLast = performance.now();
+  function vDraw(){
+    const sc = scenes.filter(x => x[0] <= vT).pop();
+    vSec.textContent = '0:' + String(Math.floor(vT)).padStart(2, '0');
+    if (vCap.textContent !== sc[1] || vSub.textContent !== sc[2]){
+      vCap.textContent = sc[1]; vSub.textContent = sc[2];
+      vSub.classList.remove('in'); void vSub.offsetWidth; vSub.classList.add('in');
+    }
+    vCta.classList.toggle('on', vT >= 24);
+    vHead.style.left = (vT / 30 * 100) + '%';
+  }
+  function vLoop(now){
+    if (vOn && !document.hidden){ vT += (now - vLast) / 1000 * 2.5; if (vT >= 30) vT = 0; vDraw(); }
+    vLast = now; requestAnimationFrame(vLoop);
+  }
+  vDraw();
+  requestAnimationFrame(vLoop);
+  if (reduce){ vBtn.textContent = '播放示範'; vBtn.setAttribute('aria-pressed', 'false'); }
+  vBtn.addEventListener('click', () => {
+    vOn = !vOn; vBtn.textContent = vOn ? '暫停示範' : '播放示範'; vBtn.setAttribute('aria-pressed', vOn);
+  });
 
   /* motion */
   if (reduce) { $$('.dots').forEach(d => d.remove()); return; }
