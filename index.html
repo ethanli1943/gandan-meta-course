@@ -808,15 +808,10 @@ input[type=range]{accent-color:var(--brand)}
   </div>
   <h3>影音：三段內容</h3>
   <div class="body">
-    <div class="demo" id="vidDemo">
-      <div class="demo-tt">示範卡 · 30 秒影音怎麼排</div>
-      <div class="vid">
-        <div class="vid-screen"><span class="vid-sec" id="vidSec">0:00</span><b id="vidCap">開頭：先給結果</b><small id="vidSub">完成後的客廳全景</small><span class="vid-cta" id="vidCta">立即預約</span></div>
-        <div class="vid-bar"><i class="sg sg1"></i><i class="sg sg2"></i><i class="sg sg3"></i><span class="vid-head" id="vidHead"></span></div>
-        <div class="vid-lab"><span>開頭<br>0–5s</span><span>中段<br>5–24s</span><span>結尾<br>24–30s</span></div>
-      </div>
-      <button type="button" class="vid-btn" id="vidBtn" aria-pressed="true">暫停示範</button>
-      <p class="note">秒數分配是示範，老師的原則是：開頭給需求或結果、中段給信任依據、結尾講清楚下一步，整支壓在 30 秒內。</p>
+    <div class="qa vid-steps">
+      <div><b>開頭</b><span>呈現需求、亮點或結果。例：先給完成後的空間全景，讓人想看下去。</span></div>
+      <div><b>中段</b><span>細節與信任依據。例：施作過程、材質與作品細節、設計師說明。</span></div>
+      <div><b>結尾</b><span>清楚說明下一步。例：服務地區、預約方式、服務條件，加上預約按鈕。</span></div>
     </div>
     <ul>
       <li><strong>投廣影片盡量壓在 30 秒內</strong>：完播率高、內容精選，廣告品質分數也比較好。參考電視廣告的秒數與節奏。</li>
@@ -1165,7 +1160,6 @@ input[type=range]{accent-color:var(--brand)}
     if (!el) return false;
     const y = el.getBoundingClientRect().top + scrollY - (id === 'top' ? 0 : nav.offsetHeight + 8);
     scrollTo({top: Math.max(0, y), behavior: smooth && !reduce ? 'smooth' : 'auto'});
-    try { history.replaceState(null, '', '#' + id); } catch(e) {}
     setTimeout(() => flash(id), smooth && !reduce ? 500 : 0);
     return true;
   }
@@ -1174,7 +1168,12 @@ input[type=range]{accent-color:var(--brand)}
     if (!a) return;
     if (jump(a.getAttribute('href').slice(1), true)) e.preventDefault();
   });
-  if (location.hash.length > 1) setTimeout(() => jump(location.hash.slice(1), false), 300);
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(e) {}
+  if (location.hash){ try { history.replaceState(null, '', location.pathname + location.search); } catch(e) {} }
+  const toTop = () => { try { window.scrollTo({top:0, left:0, behavior:'instant'}); } catch(e) { window.scrollTo(0, 0); } };
+  toTop();
+  addEventListener('load', () => { toTop(); setTimeout(toTop, 120); setTimeout(toTop, 400); });
+  addEventListener('pageshow', e => { if (e.persisted) toTop(); });
   addEventListener('hashchange', () => jump(location.hash.slice(1), false));
 
   /* ring pulse (brand line, not confetti) */
@@ -1361,36 +1360,6 @@ input[type=range]{accent-color:var(--brand)}
     const dio = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ en.target.classList.add('draw'); dio.unobserve(en.target); } }), {threshold:.35});
     $$('#adDemo, #carDemo').forEach(d => dio.observe(d));
   }
-
-  const vSec = $('#vidSec'), vCap = $('#vidCap'), vSub = $('#vidSub'), vHead = $('#vidHead'), vCta = $('#vidCta'), vBtn = $('#vidBtn');
-  const scenes = [
-    [0,'開頭：先給結果','完成後的客廳全景'],
-    [5,'中段：信任依據','施作過程：木作收納現場'],
-    [12,'中段：信任依據','作品細節：材質與燈光'],
-    [18,'中段：信任依據','設計師一句話說明'],
-    [24,'結尾：下一步','服務地區＋預約方式＋服務條件']
-  ];
-  let vT = 0, vOn = !reduce, vLast = performance.now();
-  function vDraw(){
-    const sc = scenes.filter(x => x[0] <= vT).pop();
-    vSec.textContent = '0:' + String(Math.floor(vT)).padStart(2, '0');
-    if (vCap.textContent !== sc[1] || vSub.textContent !== sc[2]){
-      vCap.textContent = sc[1]; vSub.textContent = sc[2];
-      vSub.classList.remove('in'); void vSub.offsetWidth; vSub.classList.add('in');
-    }
-    vCta.classList.toggle('on', vT >= 24);
-    vHead.style.left = (vT / 30 * 100) + '%';
-  }
-  function vLoop(now){
-    if (vOn && !document.hidden){ vT += (now - vLast) / 1000 * 2.5; if (vT >= 30) vT = 0; vDraw(); }
-    vLast = now; requestAnimationFrame(vLoop);
-  }
-  vDraw();
-  requestAnimationFrame(vLoop);
-  if (reduce){ vBtn.textContent = '播放示範'; vBtn.setAttribute('aria-pressed', 'false'); }
-  vBtn.addEventListener('click', () => {
-    vOn = !vOn; vBtn.textContent = vOn ? '暫停示範' : '播放示範'; vBtn.setAttribute('aria-pressed', vOn);
-  });
 
   /* motion */
   if (reduce) { $$('.dots').forEach(d => d.remove()); return; }
