@@ -498,6 +498,34 @@ input[type=range]{accent-color:var(--brand)}
 .ly{display:inline-block;font-size:12px;font-weight:700;color:#fff;padding:1px 9px;border-radius:999px;background:var(--grad-brand)}
 .ly.out{background:linear-gradient(120deg,#3A2620,#5A3A2E)}
 .layer-tbl small{display:block;font-size:11px;color:var(--ink-2);margin-top:2px}
+
+/* phone: tables become label/value cards, no sideways scroll */
+@media (max-width:600px){
+  .tbl{overflow-x:visible}
+  .tbl table,.tbl.wide table{min-width:0}
+  .tbl thead{display:none}
+  .tbl table,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+  .tbl tr{padding:12px 14px;border-bottom:1px solid var(--line)}
+  .tbl tr:last-child{border-bottom:0}
+  .tbl td,.tbl td.num{border:0;padding:3px 0;display:grid;grid-template-columns:6.4em 1fr;gap:10px;white-space:normal}
+  .tbl td::before{content:attr(data-label);font-size:11.5px;letter-spacing:.04em;color:var(--ink-2);padding-top:2px}
+  .tbl td:first-child{display:block;font-weight:700;font-size:15px;padding-bottom:6px}
+  .tbl td:first-child::before{content:none}
+  .tbl td[data-label=""]::before{content:none}
+  .tbl td[data-label=""]{display:block}
+  .layer-tbl td:nth-child(2){white-space:normal}
+}
+
+/* ad set settings: two lists */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pl{background:var(--glass-strong);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--glass-line);border-radius:14px;box-shadow:var(--glass-shadow);padding:12px 14px}
+.pl h4{margin:0 0 6px;font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--brand)}
+.section .pl ul{gap:0}
+.section .pl ul > li{padding:8px 0 8px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+.section .pl ul > li:last-child{border-bottom:0}
+.section .pl ul > li::before{display:none}
+.pl li b{display:block;color:var(--ink);font-size:14.5px}
+@media (max-width:600px){ .pair{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
@@ -626,11 +654,11 @@ input[type=range]{accent-color:var(--brand)}
     <div class="tbl"><table class="layer-tbl">
       <thead><tr><th>遇到的情況</th><th>先查哪一層</th><th>檢查什麼</th></tr></thead>
       <tbody>
-        <tr><td>想要預約，卻得到很多讚</td><td><span class="ly">廣告活動</span></td><td>目標設錯了：讚、留言、分享屬於「互動」目標</td></tr>
-        <tr><td>收到服務區域外的詢問</td><td><span class="ly">廣告群組</span></td><td>地區與擴展選項；素材與表單有沒有寫清楚服務地點</td></tr>
-        <tr><td>花費超出原先理解</td><td><span class="ly">廣告群組</span></td><td>預算層級、預算類型（每日或總額）、投放期間</td></tr>
-        <tr><td>有曝光，卻很少點擊</td><td><span class="ly">廣告</span><small>再看群組</small></td><td>素材、主張、優惠；再看受眾與版位</td></tr>
-        <tr><td>有詢問，卻很少成交</td><td><span class="ly out">不在廣告後台</span></td><td>名單品質、價格、回覆速度與預約流程</td></tr>
+        <tr><td data-label="遇到的情況">想要預約，卻得到很多讚</td><td data-label="先查哪一層"><span class="ly">廣告活動</span></td><td data-label="檢查什麼">目標設錯了：讚、留言、分享屬於「互動」目標</td></tr>
+        <tr><td data-label="遇到的情況">收到服務區域外的詢問</td><td data-label="先查哪一層"><span class="ly">廣告群組</span></td><td data-label="檢查什麼">地區與擴展選項；素材與表單有沒有寫清楚服務地點</td></tr>
+        <tr><td data-label="遇到的情況">花費超出原先理解</td><td data-label="先查哪一層"><span class="ly">廣告群組</span></td><td data-label="檢查什麼">預算層級、預算類型（每日或總額）、投放期間</td></tr>
+        <tr><td data-label="遇到的情況">有曝光，卻很少點擊</td><td data-label="先查哪一層"><span class="ly">廣告</span><small>再看群組</small></td><td data-label="檢查什麼">素材、主張、優惠；再看受眾與版位</td></tr>
+        <tr><td data-label="遇到的情況">有詢問，卻很少成交</td><td data-label="先查哪一層"><span class="ly out">不在廣告後台</span></td><td data-label="檢查什麼">名單品質、價格、回覆速度與預約流程</td></tr>
       </tbody>
     </table></div>
   </div>
@@ -650,12 +678,12 @@ input[type=range]{accent-color:var(--brand)}
     <div class="tbl wide"><table>
       <thead><tr><th>目標</th><th>主要用途</th><th>要看的數字</th><th>甘丹用得到嗎</th></tr></thead>
       <tbody>
-        <tr><td>品牌知名度</td><td>被看見、被記住</td><td>觸及、曝光、頻率</td><td>可用，導流到 YT</td></tr>
-        <tr><td>流量</td><td>帶人到網站、文章、活動頁</td><td>連結點擊、到達網頁</td><td><strong>主力</strong>（導到官網表單）</td></tr>
-        <tr><td>互動</td><td>留言、按讚、分享、私訊、觀看</td><td>對應的互動與後續成果</td><td><strong>主力</strong>（影片觀看、LINE）</td></tr>
-        <tr><td>潛在顧客</td><td>蒐集名單、預約、索取報價</td><td>名單數、品質、成交</td><td>慎用</td></tr>
-        <tr><td>應用程式推廣</td><td>App 安裝與使用</td><td>App 事件</td><td>用不到</td></tr>
-        <tr><td>銷售</td><td>網站購買</td><td>購買事件與金額</td><td>用不到（沒有線上商城）</td></tr>
+        <tr><td data-label="目標">品牌知名度</td><td data-label="主要用途">被看見、被記住</td><td data-label="要看的數字">觸及、曝光、頻率</td><td data-label="甘丹用得到嗎">可用，導流到 YT</td></tr>
+        <tr><td data-label="目標">流量</td><td data-label="主要用途">帶人到網站、文章、活動頁</td><td data-label="要看的數字">連結點擊、到達網頁</td><td data-label="甘丹用得到嗎"><strong>主力</strong>（導到官網表單）</td></tr>
+        <tr><td data-label="目標">互動</td><td data-label="主要用途">留言、按讚、分享、私訊、觀看</td><td data-label="要看的數字">對應的互動與後續成果</td><td data-label="甘丹用得到嗎"><strong>主力</strong>（影片觀看、LINE）</td></tr>
+        <tr><td data-label="目標">潛在顧客</td><td data-label="主要用途">蒐集名單、預約、索取報價</td><td data-label="要看的數字">名單數、品質、成交</td><td data-label="甘丹用得到嗎">慎用</td></tr>
+        <tr><td data-label="目標">應用程式推廣</td><td data-label="主要用途">App 安裝與使用</td><td data-label="要看的數字">App 事件</td><td data-label="甘丹用得到嗎">用不到</td></tr>
+        <tr><td data-label="目標">銷售</td><td data-label="主要用途">網站購買</td><td data-label="要看的數字">購買事件與金額</td><td data-label="甘丹用得到嗎">用不到（沒有線上商城）</td></tr>
       </tbody>
     </table></div>
     <ul>
@@ -672,9 +700,9 @@ input[type=range]{accent-color:var(--brand)}
     <div class="tbl"><table>
       <thead><tr><th>想要的結果</th><th>對應做法</th></tr></thead>
       <tbody>
-        <tr><td>有人填表單諮詢</td><td>Meta「流量」目標，連到官網表單（帶追蹤碼）</td></tr>
-        <tr><td>Meta 廣告影片完播率提高</td><td>Meta「互動／影片觀看」類目標</td></tr>
-        <tr><td>YouTube 長片完播率提高</td><td>Meta 做不到，只能用「知名度」導到 YT；要衝 YT 完播要從 Google Ads 下</td></tr>
+        <tr><td data-label="想要的結果">有人填表單諮詢</td><td data-label="對應做法">Meta「流量」目標，連到官網表單（帶追蹤碼）</td></tr>
+        <tr><td data-label="想要的結果">Meta 廣告影片完播率提高</td><td data-label="對應做法">Meta「互動／影片觀看」類目標</td></tr>
+        <tr><td data-label="想要的結果">YouTube 長片完播率提高</td><td data-label="對應做法">Meta 做不到，只能用「知名度」導到 YT；要衝 YT 完播要從 Google Ads 下</td></tr>
       </tbody>
     </table></div>
     <ul>
@@ -692,15 +720,18 @@ input[type=range]{accent-color:var(--brand)}
   <div class="sec-head"><div class="no"><b>§3</b></div><h2>廣告群組設定</h2><div class="dim" aria-hidden="true"><span></span></div></div>
   <div class="body">
     <p>最多、也最容易出錯的一層。少設一項，廣告可能根本送不出去。</p>
-    <div class="tbl wide"><table>
-      <thead><tr><th>成果與資料</th><th>投放與發布</th></tr></thead>
-      <tbody>
-        <tr><td>轉換位置：行動在哪發生？（粉專、IG、Messenger、網站、留言）</td><td>預算與排程：花多少、投多久？</td></tr>
-        <tr><td>成效目標：系統優先爭取什麼？要先設好轉換位置才能選</td><td>受眾：服務誰、提供哪些訊號？</td></tr>
-        <tr><td>資料來源：用哪個受眾包、哪個來源辨識成果？</td><td>版位：廣告出現在哪裡？</td></tr>
-        <tr><td>網站事件：先確認 Pixel 能正常回傳</td><td>透明度資訊：受益者與出資者</td></tr>
-      </tbody>
-    </table></div>
+    <div class="pair">
+      <div class="pl"><h4>成果與資料</h4><ul>
+        <li><b>轉換位置</b>行動在哪發生？（粉專、IG、Messenger、網站、留言）</li>
+        <li><b>成效目標</b>系統優先爭取什麼？要先設好轉換位置才能選</li>
+        <li><b>資料來源</b>用哪個受眾包、哪個來源辨識成果？</li>
+        <li><b>網站事件</b>先確認 Pixel 能正常回傳</li></ul></div>
+      <div class="pl"><h4>投放與發布</h4><ul>
+        <li><b>預算與排程</b>花多少、投多久？</li>
+        <li><b>受眾</b>服務誰、提供哪些訊號？</li>
+        <li><b>版位</b>廣告出現在哪裡？</li>
+        <li><b>透明度資訊</b>受益者與出資者</li></ul></div>
+    </div>
   </div>
 
   <h3>預算：先決定天數，再算每天花多少</h3>
@@ -722,9 +753,9 @@ input[type=range]{accent-color:var(--brand)}
     <div class="tbl wide"><table>
       <thead><tr><th></th><th>活動層級預算</th><th>群組層級預算</th></tr></thead>
       <tbody>
-        <tr><td>運作</td><td>系統在群組之間自動分配</td><td>每個群組各自設定</td></tr>
-        <tr><td>優點</td><td>依整體成果調整</td><td>直接控制每組花費、容易理解</td></tr>
-        <tr><td>注意</td><td>各群組不一定平均花</td><td>群組太多會分散資料</td></tr>
+        <tr><td data-label="">運作</td><td data-label="活動層級預算">系統在群組之間自動分配</td><td data-label="群組層級預算">每個群組各自設定</td></tr>
+        <tr><td data-label="">優點</td><td data-label="活動層級預算">依整體成果調整</td><td data-label="群組層級預算">直接控制每組花費、容易理解</td></tr>
+        <tr><td data-label="">注意</td><td data-label="活動層級預算">各群組不一定平均花</td><td data-label="群組層級預算">群組太多會分散資料</td></tr>
       </tbody>
     </table></div>
     <div class="callout"><strong>超支不能退、不能挪到下個月。</strong>除非是跟 Meta 簽約的代理商帳戶（可以月結），一般帳戶依累積花費直接扣款。超支通常是活動層總預算設太高，或群組層沒設上限。發布前核對幣別、時區、結束時間。</div>
@@ -741,7 +772,7 @@ input[type=range]{accent-color:var(--brand)}
     </ul>
     <div class="tbl"><table>
       <thead><tr><th>排除理由</th><th>排除誰</th></tr></thead>
-      <tbody><tr><td>新客優惠</td><td>既有顧客</td></tr><tr><td>活動募集</td><td>已完成報名者</td></tr><tr><td>未購買提醒</td><td>已購買者</td></tr><tr><td>再次蒐集</td><td>已留下資料者</td></tr></tbody>
+      <tbody><tr><td data-label="排除理由">新客優惠</td><td data-label="排除誰">既有顧客</td></tr><tr><td data-label="排除理由">活動募集</td><td data-label="排除誰">已完成報名者</td></tr><tr><td data-label="排除理由">未購買提醒</td><td data-label="排除誰">已購買者</td></tr><tr><td data-label="排除理由">再次蒐集</td><td data-label="排除誰">已留下資料者</td></tr></tbody>
     </table></div>
     <ul>
       <li>也可以把不想接的客人名單放進排除。興趣、行為類排除已經移除。</li>
@@ -840,9 +871,9 @@ input[type=range]{accent-color:var(--brand)}
     <div class="tbl"><table>
       <thead><tr><th>類型</th><th>來源</th><th>主要用途</th></tr></thead>
       <tbody>
-        <tr><td>儲存的受眾</td><td>地區、年齡、興趣等設定</td><td>重複使用投放條件</td></tr>
-        <tr><td>自訂受眾</td><td>顧客名單、網站、社群互動</td><td>再行銷、排除、分眾</td></tr>
-        <tr><td>類似受眾</td><td>來源受眾的共同特徵</td><td>找潛在新客</td></tr>
+        <tr><td data-label="類型">儲存的受眾</td><td data-label="來源">地區、年齡、興趣等設定</td><td data-label="主要用途">重複使用投放條件</td></tr>
+        <tr><td data-label="類型">自訂受眾</td><td data-label="來源">顧客名單、網站、社群互動</td><td data-label="主要用途">再行銷、排除、分眾</td></tr>
+        <tr><td data-label="類型">類似受眾</td><td data-label="來源">來源受眾的共同特徵</td><td data-label="主要用途">找潛在新客</td></tr>
       </tbody>
     </table></div>
   </div>
@@ -865,11 +896,11 @@ input[type=range]{accent-color:var(--brand)}
     <div class="tbl wide"><table>
       <thead><tr><th>名詞</th><th>是什麼</th><th>誰負責</th></tr></thead>
       <tbody>
-        <tr><td>Pixel</td><td>Meta 的網站追蹤碼，記錄從 FB／IG 來的人在網站做了什麼</td><td>甘丹產生，交網站廠商埋</td></tr>
-        <tr><td>UTM</td><td>網址後面的來源標籤，分辨哪個平台、哪支影片</td><td>甘丹自己做</td></tr>
-        <tr><td>GA4</td><td>Google 網站分析，一個能同時收 UTM、Pixel、事件的「容器」</td><td>網站廠商設定，甘丹要檢視連結</td></tr>
-        <tr><td>GTM</td><td>管理各種追蹤碼的工具，也要埋在網站</td><td>網站廠商</td></tr>
-        <tr><td>事件</td><td>表單「送出」按鈕上的追蹤，算出多少人完成送出</td><td>網站廠商</td></tr>
+        <tr><td data-label="名詞">Pixel</td><td data-label="是什麼">Meta 的網站追蹤碼，記錄從 FB／IG 來的人在網站做了什麼</td><td data-label="誰負責">甘丹產生，交網站廠商埋</td></tr>
+        <tr><td data-label="名詞">UTM</td><td data-label="是什麼">網址後面的來源標籤，分辨哪個平台、哪支影片</td><td data-label="誰負責">甘丹自己做</td></tr>
+        <tr><td data-label="名詞">GA4</td><td data-label="是什麼">Google 網站分析，一個能同時收 UTM、Pixel、事件的「容器」</td><td data-label="誰負責">網站廠商設定，甘丹要檢視連結</td></tr>
+        <tr><td data-label="名詞">GTM</td><td data-label="是什麼">管理各種追蹤碼的工具，也要埋在網站</td><td data-label="誰負責">網站廠商</td></tr>
+        <tr><td data-label="名詞">事件</td><td data-label="是什麼">表單「送出」按鈕上的追蹤，算出多少人完成送出</td><td data-label="誰負責">網站廠商</td></tr>
       </tbody>
     </table></div>
     <ul>
@@ -904,7 +935,7 @@ input[type=range]{accent-color:var(--brand)}
   <div class="body">
     <div class="tbl"><table>
       <thead><tr><th>成果階段</th><th class="num">數量</th><th class="num">每次成本</th></tr></thead>
-      <tbody><tr><td>表單名單</td><td class="num">30 筆</td><td class="num">NT$200</td></tr><tr><td>有效名單</td><td class="num">15 筆</td><td class="num">NT$400</td></tr><tr><td>實際到店新客</td><td class="num">6 位</td><td class="num">NT$1,000</td></tr></tbody>
+      <tbody><tr><td data-label="成果階段">表單名單</td><td class="num" data-label="數量">30 筆</td><td class="num" data-label="每次成本">NT$200</td></tr><tr><td data-label="成果階段">有效名單</td><td class="num" data-label="數量">15 筆</td><td class="num" data-label="每次成本">NT$400</td></tr><tr><td data-label="成果階段">實際到店新客</td><td class="num" data-label="數量">6 位</td><td class="num" data-label="每次成本">NT$1,000</td></tr></tbody>
     </table></div>
     <p class="note">假設花費 NT$6,000。Meta 只算到「表單名單」；有效名單與到店要甘丹自己追蹤，再回報代理商。</p>
   </div>
@@ -959,11 +990,11 @@ input[type=range]{accent-color:var(--brand)}
     <div class="tbl wide"><table>
       <thead><tr><th>項目</th><th>數字</th><th>老師的判讀</th></tr></thead>
       <tbody>
-        <tr><td>曝光／觸及</td><td class="num">529,000／478,000</td><td>—</td></tr>
-        <tr><td>點擊／花費</td><td class="num">1,061 次／NT$11,284</td><td><strong>CPC 約 NT$10.6</strong>，偏高</td></tr>
-        <tr><td>其他兩則</td><td class="num">NT$3,952／369 次<br>NT$7,332／692 次</td><td>CPC 也都 10 元多</td></tr>
-        <tr><td>表單廣告</td><td class="num">曝光約 82,000<br>表單 24 筆／NT$30,301</td><td><strong>CPA 約 NT$1,263</strong>，偏高</td></tr>
-        <tr><td>另一則</td><td class="num">花費約 NT$17,000</td><td>私訊成本同樣 1,000 多元</td></tr>
+        <tr><td data-label="項目">曝光／觸及</td><td class="num" data-label="數字">529,000／478,000</td><td data-label="老師的判讀">—</td></tr>
+        <tr><td data-label="項目">點擊／花費</td><td class="num" data-label="數字">1,061 次／NT$11,284</td><td data-label="老師的判讀"><strong>CPC 約 NT$10.6</strong>，偏高</td></tr>
+        <tr><td data-label="項目">其他兩則</td><td class="num" data-label="數字">NT$3,952／369 次<br>NT$7,332／692 次</td><td data-label="老師的判讀">CPC 也都 10 元多</td></tr>
+        <tr><td data-label="項目">表單廣告</td><td class="num" data-label="數字">曝光約 82,000<br>表單 24 筆／NT$30,301</td><td data-label="老師的判讀"><strong>CPA 約 NT$1,263</strong>，偏高</td></tr>
+        <tr><td data-label="項目">另一則</td><td class="num" data-label="數字">花費約 NT$17,000</td><td data-label="老師的判讀">私訊成本同樣 1,000 多元</td></tr>
       </tbody>
     </table></div>
     <ul>
