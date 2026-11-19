@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>甘丹 Meta 廣告課程講義</title>
+<script>try{var t=localStorage.getItem('gandan-meta-course-theme');if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -565,6 +566,152 @@ input[type=range]{accent-color:var(--brand)}
 .sp-say.bad{color:var(--brand)}
 .sp-say.ok{color:var(--ok)}
 #l2todo .decide + .decide{margin-top:12px}
+/* 深淺色切換鈕 */
+.nav-end{display:flex;align-items:center;gap:10px;min-width:0}
+.theme-btn{flex:0 0 auto;font:inherit;font-size:11.5px;letter-spacing:.04em;line-height:1;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;white-space:nowrap;transition:border-color .25s}
+.theme-btn:hover{border-color:var(--brand)}
+/* ===== 2.4 挑素材與下標題：步驟＋示範動畫 ===== */
+.m24-lead{font-size:16px}
+.m24-nav{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:6px 0 0}
+.m24-nav a{display:inline-flex;align-items:center;gap:7px;font-size:13px;padding:4px 12px 4px 4px;border-radius:999px;border:1px solid var(--glass-line);background:var(--glass-strong);color:var(--ink);text-decoration:none;transition:border-color .25s}
+.m24-nav a:hover{border-color:var(--brand)}
+.m24-nav a b,.m24-no{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;font-family:var(--f-num);font-size:12px;font-weight:600;color:#fff;background:var(--grad-brand);flex:0 0 auto}
+.m24-no{width:26px;height:26px;font-size:13.5px;margin-right:9px;vertical-align:2px}
+#l2s4 .demo{margin:14px 0}
+
+/* 1 curve */
+.m24-curve{display:block;width:100%;height:auto;max-width:520px;align-self:center}
+.m24-curve .za{fill:var(--stone);opacity:.55}
+.m24-curve .zb{fill:var(--brand-soft);opacity:.85}
+.m24-curve .ax{stroke:var(--line);stroke-width:1}
+.m24-curve text{font-family:var(--f-body);font-size:10.5px;fill:var(--ink-2)}
+.m24-curve .zt{font-size:11.5px}
+.m24-curve .hot-t{font-size:13px;font-weight:700;fill:var(--brand)}
+.m24-curve .cv{fill:none;stroke:var(--brand);stroke-width:2.6;stroke-linecap:round;stroke-dasharray:1 1}
+.m24-curve .pt{fill:var(--brand)}
+.m24-curve .ring{fill:none;stroke:var(--brand);stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:m24ring 1.8s ease-out infinite}
+@keyframes m24ring{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+#m24Curve.pre:not(.draw) .cv{stroke-dashoffset:1}
+#m24Curve.pre:not(.draw) .go{opacity:0}
+#m24Curve.draw .cv{animation:m24draw 2.2s cubic-bezier(.6,0,.2,1) both}
+#m24Curve.draw .go{animation:m24fade .6s 2s both}
+@keyframes m24draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes m24fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* 2 three gates */
+.m24-gates{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.g-line{position:absolute;left:16.67%;right:16.67%;top:17px;height:2px;background:var(--line)}
+.g-line span{display:block;height:100%;width:0;background:var(--grad-brand);transition:width .5s cubic-bezier(.6,0,.2,1)}
+.gate{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+.g-dot{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--f-num);font-weight:700;font-size:15px;color:var(--ink-2);background:var(--surface);border:1.5px solid var(--line);transition:background .35s,border-color .35s,color .35s}
+.gate b{font-size:13px;line-height:1.4}
+.gate small{font-size:12px;line-height:1.5;color:var(--ink-2);min-height:3em}
+.gate.ok .g-dot{background:var(--ok);border-color:var(--ok);color:var(--surface)}
+.gate.no .g-dot{background:var(--brand);border-color:var(--brand);color:var(--surface)}
+.gate.mid .g-dot{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
+.gate.pop .g-dot,.m24-verdict.pop{animation:m24pop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes m24pop{0%{transform:scale(.4);opacity:.2}100%{transform:none;opacity:1}}
+.m24-title{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:12px;background:var(--glass-strong);border:1px solid var(--glass-line)}
+.m24-title .m24-row{display:flex;gap:10px;align-items:baseline}
+.m24-title small{flex:0 0 auto;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink-2);padding:0 7px;border:1px solid var(--line);border-radius:999px}
+.m24-old{position:relative;font-size:14.5px;color:var(--ink-2)}
+.m24-old::after{content:"";position:absolute;left:0;top:55%;height:2px;width:0;background:var(--brand);transition:width .5s ease}
+.m24-old.cut::after{width:100%}
+.m24-new{font-size:16px;color:var(--brand)}
+.m24-new.keep{color:var(--ok)}
+.m24-caret{display:inline-block;width:2px;height:1.05em;margin-left:2px;vertical-align:-3px;background:var(--brand);animation:m24blink 1s steps(1) infinite}
+@keyframes m24blink{50%{opacity:0}}
+.m24-verdict{align-self:flex-start;font-size:12.5px;font-weight:700;padding:2px 12px;border-radius:999px;color:var(--surface);background:var(--ink)}
+.m24-verdict:empty{display:none}
+.m24-verdict.ok{background:var(--ok)}
+.m24-verdict.no{background:var(--brand)}
+.m24-verdict.mid{background:var(--warn)}
+.m24-more{margin-top:10px}
+.m24-more summary{cursor:pointer;font-size:14px;color:var(--brand);padding:4px 0}
+.m24-more[open] summary{margin-bottom:8px}
+
+/* 3 ladder + crowd */
+.m24-ladder{display:flex;flex-direction:column;gap:6px}
+.rung{display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:inherit;font-size:14.5px;line-height:1.5;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;opacity:.45;transition:opacity .4s,border-color .4s,box-shadow .4s,transform .4s}
+.rung i{flex:0 0 auto;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--f-num);font-size:11px;color:var(--ink-2);border:1px solid var(--line)}
+.rung.past{opacity:.75}
+.rung.on{opacity:1;border-color:var(--brand);transform:translateX(6px);box-shadow:0 10px 22px -16px rgba(167,74,45,.7)}
+.rung.on i{color:#fff;border-color:transparent;background:var(--grad-brand)}
+.m24-crowd{display:grid;grid-template-columns:repeat(16,1fr);gap:6px;padding:6px 2px;max-width:460px}
+.m24-crowd i{display:block;aspect-ratio:1;border-radius:50%;background:var(--line);opacity:.6;transition:background .55s,opacity .55s,transform .55s,box-shadow .55s}
+.m24-crowd i.lv1{background:var(--brand-2);opacity:.75}
+.m24-crowd i.lv2{background:var(--brand);opacity:1;transform:scale(1.3);box-shadow:0 0 0 3px var(--brand-soft)}
+.m24-crowd.s2 i:not(.lv2){opacity:.25}
+.m24-key{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--ink-2)}
+.m24-key span{display:inline-flex;align-items:center;gap:5px}
+.m24-key i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.m24-key i.k1{background:var(--brand-2)}
+.m24-key i.k2{background:var(--brand)}
+
+/* 4 fan-out */
+.m24-fan{display:flex;flex-direction:column;align-items:center;gap:14px}
+.fan-src{position:relative;z-index:2;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 10px;border-radius:14px;color:#F7EEE8;background:radial-gradient(70% 90% at 85% 0%,rgba(196,98,60,.55),transparent 70%),linear-gradient(160deg,#2E1E19,#1C1311);box-shadow:var(--glass-shadow)}
+.fan-src .play{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:rgba(255,255,255,.14)}
+.fan-src b{display:block;font-size:15px}
+.fan-src small{font-size:12px;color:#D9C7BC}
+.fan-cards{position:relative;width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fan-card{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:12px;background:var(--glass-strong);border:1px solid var(--glass-line);box-shadow:var(--glass-shadow);transition:transform .7s cubic-bezier(.2,.9,.25,1.15),opacity .5s;transition-delay:calc(var(--i)*.16s)}
+.fan-card em{font-style:normal;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;color:var(--brand)}
+.fan-card b{font-size:14.5px;line-height:1.45}
+.fan-card .chips{display:flex;flex-wrap:wrap;gap:4px}
+.fan-card .chips i{font-style:normal;font-size:11.5px;padding:1px 8px;border-radius:999px;color:var(--brand);background:var(--brand-soft)}
+.fan-card .chips i.q{color:var(--ink-2);background:var(--stone)}
+.fan-card.ghost{background:transparent;box-shadow:none;border:1.5px dashed var(--line)}
+.fan-card.ghost b{color:var(--ink-2)}
+#m24Fan.pre:not(.go) .fan-card{opacity:0;transform:translateY(-56px) scale(.8)}
+.m24-how{margin:14px 0 0;padding-left:1.4em}
+.m24-how li{margin:4px 0}
+.m24-vs{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--surface)}
+.vs-tt{font-weight:700;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vs-grid > div{padding:10px 12px;border-radius:10px;background:var(--paper)}
+.vs-grid b{font-size:13px;color:var(--brand)}
+.vs-grid p{margin:4px 0 0;font-size:14px;line-height:1.7}
+.vs-end{margin:10px 0 0;font-size:14px}
+
+/* 5 landing page phone */
+.m24-land{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 28px}
+.phone.sm{max-width:220px;flex:0 0 auto;align-self:auto}
+.lp-screen{height:330px;border-radius:18px;overflow:auto;background:#FBFAF9;color:#231815;scrollbar-width:none}
+.lp-screen::-webkit-scrollbar{display:none}
+#m24Land.anim .lp-screen{overflow:hidden}
+.lp-feed{display:flex;flex-direction:column;gap:8px;padding:10px;transition:transform 1.1s cubic-bezier(.6,0,.2,1)}
+.lp-head{display:flex;justify-content:space-between;align-items:baseline;padding:2px 2px 4px;border-bottom:1px solid #E7DCD4}
+.lp-head b{font-size:13px}
+.lp-head small{font-size:10px;color:#6A615D}
+.lp-img{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:linear-gradient(160deg,#F6ECE3,#E6D0BE)}
+.lp-img.b{background:linear-gradient(160deg,#F3E8DE,#DCC3AE)}
+.lp-img.c{background:linear-gradient(160deg,#F7EFE8,#E9D6C6)}
+.lp-img svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:#7A5A4A;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.lp-img svg .f{fill:rgba(255,255,255,.6)}
+.lp-img span{position:absolute;left:8px;bottom:6px;font-size:10px;color:#fff;padding:0 8px;border-radius:999px;background:rgba(35,24,21,.45)}
+.lp-form{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:10px;background:#F1E7E0}
+.lp-form b{font-size:12.5px}
+.lp-form .fld{height:14px;border-radius:4px;background:#fff;border:1px solid #DCC8BA}
+.lp-form .btn{align-self:flex-start;font-size:11px;font-weight:700;color:#fff;padding:3px 12px;border-radius:6px;background:linear-gradient(120deg,#8E3B22,#C9805F)}
+.lp-legend{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:200px}
+.lp-legend li{position:relative;padding:6px 0 6px 16px;font-size:14.5px;color:var(--ink-2);border-left:2px solid var(--line);transition:color .4s,border-color .4s}
+.lp-legend li b{color:inherit}
+.lp-legend li.on{color:var(--ink);border-color:var(--brand)}
+.lp-legend li.on b{color:var(--brand)}
+
+@media (max-width:560px){
+  .fan-cards{grid-template-columns:1fr}
+  .vs-grid{grid-template-columns:1fr}
+  .m24-crowd{grid-template-columns:repeat(12,1fr)}
+  .lp-legend{min-width:0;flex-direction:row;flex-wrap:wrap;gap:6px 12px}
+  .lp-legend li{font-size:13px;padding:2px 0 2px 10px}
+}
+@media (prefers-reduced-motion: reduce){
+  .m24-curve .ring,.m24-caret{animation:none!important}
+  .m24-caret{display:none}
+  .rung,.m24-crowd i,.fan-card,.lp-feed,.g-line span{transition:none!important}
+}
 </style>
 </head>
 <body>
@@ -575,7 +722,7 @@ input[type=range]{accent-color:var(--brand)}
   <div class="wrap">
     <div class="nav-top">
       <span class="brandmark"><i aria-hidden="true"></i>甘丹設計｜內部講義</span>
-      <span class="where" id="where">Meta 廣告課程</span>
+      <span class="nav-end"><span class="where" id="where">Meta 廣告課程</span><button type="button" class="theme-btn" id="themeBtn" aria-label="切換深淺色"></button></span>
     </div>
     <div class="chips" id="chips">
       <a class="chip key" href="#plan">未來方針</a>
@@ -1227,11 +1374,11 @@ input[type=range]{accent-color:var(--brand)}
     <li><a href="#l2s3"><span class="n">07</span><div><h3>決定要不要買 Meta 驗證</h3><p>只要客服與藍勾勾，標準版 NT$352／月；要在 Reels 放連結，至少升級方案 NT$1,373／月（課堂當天畫面價格）。</p></div><span class="go">2.3</span></a></li>
     <li><a href="#l2s4"><span class="n">08</span><div><h3>素材標題改成「有輪廓」的版本</h3><p>第一批先推「貓貓的家 6 個亮點設計」；Japandi、極簡黑灰、魔術師那幾支照老師的方向改標題。</p></div><span class="go">2.4</span></a></li>
   </ol>
-  <a class="decide" href="#l2s4">
+  <a class="decide" href="#m24-pick">
     <span class="t"><span>Meta 廣告要不要連到 YouTube？</span><span class="go">2.4</span></span>
     <p>第1堂老師說 Meta 不要直接投 YT 連結（成效差）；這堂挑素材時又建議貓貓那支「連結放 YT」，也說流量廣告可以放 YT 連結、撥一點點預算。這批廣告的終點是 YT 還是官網表單，要先定。</p>
   </a>
-  <a class="decide" href="#l2s4">
+  <a class="decide" href="#m24-budget">
     <span class="t"><span>預算數字要不要寫進標題？</span><span class="go">2.4</span></span>
     <p>老師建議用輪廓、不寫數字（寫死會把人排除，也像陷阱）；同仁認為 TA 本來就是 200–300 萬，寫出來剛好排除非 TA。課堂上沒有結論。</p>
   </a>
@@ -1385,47 +1532,173 @@ input[type=range]{accent-color:var(--brand)}
 <section class="section wrap" id="l2s4">
   <div class="sec-head"><div class="no"><b>2.4</b> <span class="tag tag-g">甘丹</span></div><h2>挑素材與下標題</h2><div class="dim" aria-hidden="true"><span></span></div></div>
   <div class="body">
-    <ul>
-      <li><strong>挑本來就表現好的素材</strong>，事半功倍；本來表現不好的，推了也很難有結果。可以再搭一支表現普通的，看出兩者落差。</li>
-      <li>YT 影片還在自然成長時，先不要用 Meta 導流；等成長曲線停下來再推，避免 Meta 進來的觀眾表現不好，拖累 YT 演算法。</li>
-    </ul>
+    <p class="m24-lead">老師的重點：<strong>廣告推不推得動，投之前就決定了一半。</strong>素材挑錯、標題沒輪廓，後面預算怎麼調都很難推。老師說他幫客戶下廣告時，一直都要先談這一塊；輪廓沒先想好，下一步設定受眾會很茫然。照下面五步走：</p>
+    <ol class="m24-nav">
+      <li><a href="#m24-pick"><b>1</b>挑哪一支</a></li>
+      <li><a href="#m24-gate"><b>2</b>過三關</a></li>
+      <li><a href="#m24-shape"><b>3</b>下輪廓</a></li>
+      <li><a href="#m24-multi"><b>4</b>一支多投</a></li>
+      <li><a href="#m24-land"><b>5</b>點進去那頁</a></li>
+    </ol>
   </div>
-  <h3>素材三要素（照片、影片都適用）</h3>
+
+  <h3 id="m24-pick"><span class="m24-no">1</span>挑哪一支影片</h3>
   <div class="body">
-    <div class="qa">
-      <div><b>01</b>有沒有人，或動物</div>
-      <div><b>02</b>這個人或動物，有沒有跟要呈現的內容結合</div>
-      <div><b>03</b>最後才是標題：有前兩項，才想得出好標題</div>
+    <ul>
+      <li><strong>挑本來就表現好的</strong>，好的推了會更好、事半功倍；本來表現不好的，推了也很難有結果。這批的首選是「貓貓的家 6 個亮點設計」。</li>
+      <li><strong>再搭一支表現普普的當對照組</strong>，兩支一起投，就看得出廣告品質的落差在哪。</li>
+      <li><strong>不要拿預告片下廣告</strong>：YT 正片開頭本來就有一段預告，廣告是預告、點進去又是預告，內容重複。直接用影片本身。</li>
+      <li>老師認為貓貓這支連到 YT 的點閱也會不錯；但這批廣告的終點是 YT 還是官網表單，還沒定（見 <a href="#l2todo">待拍板</a>）。</li>
+    </ul>
+    <div class="demo" id="m24Curve">
+      <div class="demo-tt">示範 · 什麼時候用 Meta 推 YT 影片</div>
+      <svg class="m24-curve" viewBox="0 0 320 168" role="img" aria-label="YT 影片觀看數曲線：前段還在自然成長時先別推，曲線變平之後再用 Meta 推">
+        <rect class="za" x="24" y="14" width="136" height="118" rx="4"/>
+        <rect class="zb" x="160" y="14" width="146" height="118" rx="4"/>
+        <line class="ax" x1="24" y1="132" x2="306" y2="132"/>
+        <line class="ax" x1="24" y1="14" x2="24" y2="132"/>
+        <text x="16" y="74" text-anchor="middle" transform="rotate(-90 16 74)">觀看數</text>
+        <text x="306" y="148" text-anchor="end">時間 →</text>
+        <text class="zt" x="92" y="112" text-anchor="middle">還在自然成長</text>
+        <text class="zt" x="92" y="126" text-anchor="middle">先別推</text>
+        <path class="cv" pathLength="1" d="M24 130 C56 128 78 78 108 52 C128 36 146 33 172 32 L306 31"/>
+        <g class="go">
+          <circle class="ring" cx="172" cy="32" r="6"/>
+          <circle class="pt" cx="172" cy="32" r="5"/>
+          <text class="hot-t" x="233" y="80" text-anchor="middle">曲線停了</text>
+          <text class="hot-t" x="233" y="98" text-anchor="middle">再用 Meta 推</text>
+        </g>
+      </svg>
+      <p class="demo-say">YT 自己還在推的時候，如果 Meta 帶進來的觀眾表現不好（看沒多久就離開），會拖累 YT 演算法推這支影片。所以等它的自然成長曲線停下來，再用 Meta 補流量。</p>
     </div>
   </div>
-  <h3>現場逐支評分</h3>
+
+  <h3 id="m24-gate"><span class="m24-no">2</span>每支素材過三關</h3>
   <div class="body">
-    <div class="tbl wide"><table>
-      <thead><tr><th>素材</th><th>老師的評語</th><th>怎麼用／怎麼改</th></tr></thead>
-      <tbody>
-        <tr><td data-label="素材">貓貓的家 6 個亮點設計</td><td data-label="老師的評語"><strong>最好</strong>：有動物、內容是室內設計、標題完整</td><td data-label="怎麼用／怎麼改">第一批先推這支。不要下預告片：正片前面本來就有預告，點進去又是預告</td></tr>
-        <tr><td data-label="素材">3 房 2 廳 2 衛 Japandi</td><td data-label="老師的評語">只有內容沒有人；三房兩廳人人都是，Japandi 還不夠聚焦</td><td data-label="怎麼用／怎麼改">加上輪廓，例：「三房兩廳的科技宅」</td></tr>
-        <tr><td data-label="素材">室內 30 坪帶你看貓貓的家</td><td data-label="老師的評語">9:16，但主畫面只佔中間約三分之一，上下都是字</td><td data-label="怎麼用／怎麼改">適合限動、LINE 社群當預告；不適合拿來衝填表</td></tr>
-        <tr><td data-label="素材">兩房兩廳 極簡黑灰</td><td data-label="老師的評語">沒交代誰住；極簡黑灰第一印象是男生會有興趣</td><td data-label="怎麼用／怎麼改">針對男性輪廓下標，例：「雙人溫馨宅」（避免直接寫情侶）</td></tr>
-        <tr><td data-label="素材">魔術道具師的家</td><td data-label="老師的評語">職業本身吸引力不夠，真正的賣點是房子裡的機關</td><td data-label="怎麼用／怎麼改">「室內 20 坪塞了 50 個機關」「魔術師的機關收納法」</td></tr>
-      </tbody>
-    </table></div>
+    <p>照片、影片都一樣，老師看素材只看這三件事，而且<strong>順序有意義</strong>：前兩項有了，才想得出好標題。</p>
+    <div class="qa">
+      <div><b>01</b>有沒有人，或動物（這裡的「物」是指動物，不是東西）</div>
+      <div><b>02</b>這個人或動物，有沒有跟要呈現的內容結合</div>
+      <div><b>03</b>最後才是標題：給人一個明確的輪廓、一個想像</div>
+    </div>
+    <div class="demo" id="m24Chk">
+      <div class="demo-tt">互動 · 課堂上逐支健檢（點素材看結果）</div>
+      <div class="demo-steps" role="group" aria-label="選擇素材">
+        <button type="button" data-k="cat" aria-pressed="false">貓貓的家</button>
+        <button type="button" data-k="jap" aria-pressed="false">三房 Japandi</button>
+        <button type="button" data-k="v916" aria-pressed="false">30 坪貓貓預告</button>
+        <button type="button" data-k="gray" aria-pressed="false">極簡黑灰</button>
+        <button type="button" data-k="magic" aria-pressed="false">魔術師的家</button>
+      </div>
+      <div class="m24-gates">
+        <span class="g-line" aria-hidden="true"><span id="m24Line"></span></span>
+        <div class="gate"><i class="g-dot">1</i><b>人或動物</b><small></small></div>
+        <div class="gate"><i class="g-dot">2</i><b>跟內容結合</b><small></small></div>
+        <div class="gate"><i class="g-dot">3</i><b>標題有輪廓</b><small></small></div>
+      </div>
+      <div class="m24-title">
+        <div class="m24-row"><small>原本</small><span class="m24-old" id="m24Old"></span></div>
+        <div class="m24-row"><small>改成</small><span><b class="m24-new" id="m24New"></b><i class="m24-caret" aria-hidden="true"></i></span></div>
+      </div>
+      <span class="m24-verdict" id="m24Verdict"></span>
+      <p class="demo-say" id="m24Say" aria-live="polite"></p>
+      <p class="note">「原本」是課堂上念到的影片標題；「改成」是老師當場給的方向，不是定稿。</p>
+    </div>
+    <details class="m24-more">
+      <summary>五支素材一覽表</summary>
+      <div class="tbl wide"><table>
+        <thead><tr><th>素材</th><th>老師的評語</th><th>怎麼用／怎麼改</th></tr></thead>
+        <tbody>
+          <tr><td data-label="素材">貓貓的家 6 個亮點設計</td><td data-label="老師的評語"><strong>最好</strong>：有動物、內容是室內設計、標題完整</td><td data-label="怎麼用／怎麼改">第一批先推這支，用影片本身，不用預告</td></tr>
+          <tr><td data-label="素材">3 房 2 廳 2 衛 Japandi 風格</td><td data-label="老師的評語">只有內容沒有人；三房兩廳人人都在寫</td><td data-label="怎麼用／怎麼改">加上輪廓，例：「三房兩廳的科技宅」「三房兩廳的 AI 宅」</td></tr>
+          <tr><td data-label="素材">室內 30 坪帶你看貓貓的家</td><td data-label="老師的評語">9:16，但主畫面只佔中間約三分之一，上下都是字</td><td data-label="怎麼用／怎麼改">適合限動、LINE 社群當預告；打品牌、導 YT 可以，打填表不適合</td></tr>
+          <tr><td data-label="素材">兩房兩廳兩衛 極簡黑灰風格</td><td data-label="老師的評語">沒交代誰住；極簡黑灰第一印象是男生會有興趣</td><td data-label="怎麼用／怎麼改">針對男性輪廓下標，例：「雙人溫馨宅」（不要直接寫情侶）</td></tr>
+          <tr><td data-label="素材">魔術道具師的家</td><td data-label="老師的評語">職業本身吸引力不夠，真正的賣點是家裡的機關</td><td data-label="怎麼用／怎麼改">「室內 20 坪塞了 50 個機關」「魔術師的機關收納法」</td></tr>
+        </tbody>
+      </table></div>
+    </details>
   </div>
-  <h3>標題要有明確輪廓</h3>
+
+  <h3 id="m24-shape"><span class="m24-no">3</span>標題要有輪廓：越具體，越吸到對的人</h3>
   <div class="body">
+    <div class="demo" id="m24Zoom">
+      <div class="demo-tt">示範 · 同一樣東西，寫法越具體，被吸住的人越確定</div>
+      <div class="demo-steps" role="group" aria-label="選擇例子">
+        <button type="button" data-z="hook" aria-pressed="true">老師的掛鉤例子</button>
+        <button type="button" data-z="home" aria-pressed="false">換成室內設計</button>
+      </div>
+      <div class="m24-ladder" id="m24Ladder">
+        <button type="button" class="rung" data-s="0"><i>1</i><span></span></button>
+        <button type="button" class="rung" data-s="1"><i>2</i><span></span></button>
+        <button type="button" class="rung" data-s="2"><i>3</i><span></span></button>
+      </div>
+      <div class="m24-crowd" id="m24Crowd" aria-hidden="true"></div>
+      <div class="m24-key" aria-hidden="true"><span><i></i>滑過去</span><span><i class="k1"></i>有點興趣</span><span><i class="k2"></i>「這就是我要的」</span></div>
+      <p class="demo-say" id="m24ZSay" aria-live="polite"></p>
+      <button type="button" class="vid-btn" id="m24ZPlay">▶ 再播一次</button>
+    </div>
     <ul>
-      <li>範圍太大就跟大家一樣。有特殊需求的人才會找設計公司，沒有特殊需求的人自己裝潢就好。</li>
-      <li>越具體，越能吸到對的人：「掛鉤」→「承重 20 公斤的掛鉤」→「可以掛 20 支羽球拍的掛鉤」。</li>
-      <li>輪廓不清楚，後面設定受眾會更痛苦。</li>
-      <li><strong>同一支影片可以重複投</strong>：只換封面和標題（後台上傳的素材可以換封面），對準不同族群。例：奶油風對年輕夫妻講雙臉盆、更衣室，對另一群講電競房。</li>
-      <li>預算數字要不要寫進標題，課堂上沒有結論（見 <a href="#l2todo">待拍板</a>）。</li>
+      <li><strong>為什麼要窄：</strong>會來找設計公司的，通常是有特殊需求的人（家裡有貓、兩位男生要住…）；沒有特殊需求，自己找人裝潢就好。範圍太大，就跟大家一樣。</li>
+      <li><strong>先想清楚主角是「人」還是「作品」：</strong>貓是大家都喜歡的寵物，而且是先有貓、才有這個家，所以「貓貓友善宅」成立。魔術師這個職業不夠吸引人，主角就該換成作品本身（奶油風、機關），「這間竟然是魔術師住的」當彩蛋。</li>
+      <li><strong>用一句話給人想像：</strong>「現代風收納 3 個實用小設計」大家都在講；要說出你這間讓人印象深刻的點，例如「魔術師的機關收納法」。</li>
+      <li>輪廓沒想清楚，下一步設定受眾會更痛苦（見 <a href="#l2s6">2.6 組合層</a>）。</li>
     </ul>
   </div>
-  <h3>廣告點進去的那一頁</h3>
+
+  <h3 id="m24-multi"><span class="m24-no">4</span>同一支影片，換封面對不同族群</h3>
   <div class="body">
+    <div class="callout"><strong>課堂上卡最久的一題：</strong>同仁擔心寫輪廓會被限制住，因為大家搜尋時是搜風格，不會搜「年輕夫妻」。老師的回答是：<strong>YT 上的標題不用動，照搜尋習慣寫風格；廣告是另外一份素材</strong>，在廣告後台可以換封面、換標題，同一支影片就能對不同族群各投一則。</div>
+    <div class="demo" id="m24Fan">
+      <div class="demo-tt">示範 · 一支影片，多種封面</div>
+      <div class="m24-fan">
+        <div class="fan-src"><span class="play" aria-hidden="true">▶</span><div><b>奶油風住宅</b><small>YT 正片：標題照搜尋寫風格</small></div></div>
+        <div class="fan-cards">
+          <div class="fan-card" style="--i:0"><em>廣告 A · 年輕夫妻</em><b>年輕夫妻的奶油風宅</b><span class="chips"><i>雙臉盆</i><i>更衣室</i><i>電競房</i></span></div>
+          <div class="fan-card" style="--i:1"><em>廣告 B · 退休族</em><b>退休族的奶油風宅</b><span class="chips"><i class="q">賣點待討論</i></span></div>
+          <div class="fan-card ghost" style="--i:2"><em>廣告 C</em><b>下一個族群？</b><span class="chips"><i class="q">換封面＋標題就好</i></span></div>
+        </div>
+      </div>
+      <button type="button" class="vid-btn" id="m24FPlay">▶ 再播一次</button>
+      <p class="note">示範用。老師課堂上提到奶油風適合年輕夫妻、也適合退休族；雙臉盆、更衣室、電競房是老師舉的「夫妻宅」想像，實際賣點要照案場。</p>
+    </div>
+    <ol class="m24-how">
+      <li>影片留著，<strong>上傳時先不要上封面</strong>。</li>
+      <li>到廣告後台上傳素材時，<strong>加上不同的封面</strong>。</li>
+      <li>每個封面＋標題對準一群人，各自一則廣告。也可以把同一個案場重剪成不同重點的版本（老師說 2～3 支就夠用）。</li>
+    </ol>
+    <div class="m24-vs" id="m24-budget">
+      <div class="vs-tt">預算數字要不要寫進標題？<span class="tag tag-v">待拍板</span></div>
+      <div class="vs-grid">
+        <div><b>老師</b><p>標題直接寫一個比較高的預算，預算不到的人會覺得「這家開價比較高」，就不會找你；實際上預算是可以調的。</p></div>
+        <div><b>同仁</b><p>200～300 萬本來就是我們的 TA，寫出來剛好排除不是主要受眾的人。</p></div>
+      </div>
+      <p class="vs-end">老師的回應是「也可以」，但不管寫不寫數字，<strong>輪廓都要夠具體</strong>。課堂上沒有結論。</p>
+    </div>
+  </div>
+
+  <h3 id="m24-land"><span class="m24-no">5</span>廣告點進去的那一頁</h3>
+  <div class="body">
+    <div class="demo" id="m24Land">
+      <div class="demo-tt">示範 · 先看作品，最後才是表單</div>
+      <div class="m24-land">
+        <div class="phone sm"><div class="lp-screen"><div class="lp-feed" id="m24Feed">
+          <div class="lp-head"><b>奶油風作品</b><small>甘丹設計</small></div>
+          <div class="lp-img"><svg viewBox="0 0 160 100" aria-hidden="true"><path d="M18 86 V64 Q18 56 26 56 H84 Q92 56 92 64 V86" class="f"/><path d="M18 72 H92"/><rect x="104" y="22" width="40" height="44" rx="2"/><path d="M0 86 H160"/></svg><span>客廳</span></div>
+          <div class="lp-img b"><svg viewBox="0 0 160 100" aria-hidden="true"><path d="M14 86 V50 H146 V86" class="f"/><path d="M14 62 H146 M60 50 V86 M100 50 V86"/><path d="M40 20 H120 V38 H40 Z"/><path d="M0 86 H160"/></svg><span>廚房</span></div>
+          <div class="lp-img c"><svg viewBox="0 0 160 100" aria-hidden="true"><path d="M30 86 V58 H130 V86" class="f"/><path d="M30 58 V40 Q30 34 36 34 H124 Q130 34 130 40 V58"/><path d="M42 58 V50 H74 V58 M86 58 V50 H118 V58"/><path d="M0 86 H160"/></svg><span>主臥</span></div>
+          <div class="lp-form"><b>預約諮詢</b><span class="fld"></span><span class="fld"></span><span class="fld"></span><span class="btn">送出</span></div>
+        </div></div></div>
+        <ol class="lp-legend">
+          <li data-s="0"><b>先看到</b>同一種風格的作品照</li>
+          <li data-s="1"><b>越滑越喜歡</b>，一直往下</li>
+          <li data-s="2"><b>最後才是</b>諮詢表單</li>
+        </ol>
+      </div>
+    </div>
     <ul>
-      <li>一點進去就是表單，可能把人嚇跑。表單上方先放同風格的作品圖，往下滑才是表單，像一頁式廣告。</li>
+      <li>一點進去就是表單，可能把人嚇跑。表單上方先放同風格的作品圖，往下滑才是表單，像一頁式廣告。<strong>觀眾不會跳到其他頁面去看，會留在這一頁</strong>，所以作品要放在這一頁。</li>
       <li>這一期主打奶油風，頁面上方就全放奶油風；一段時間換一個主題，看哪一種詢問多，不要所有主題一起放。</li>
+      <li>如果是連到官網，網站上的圖要清楚；課堂上看到官網還有舊辦公室的照片，要換掉。</li>
       <li>自己做表單頁也可以，但要放在甘丹同一個網域、帶隱私權條款。風險是：工程師嵌錯程式碼可能讓整站壞掉；還要有後台（CRM）接收資料，不然送出的資料不知道跑去哪。</li>
     </ul>
   </div>
@@ -1960,6 +2233,152 @@ input[type=range]{accent-color:var(--brand)}
     });
   });
   hcount();
+
+  /* 深淺色切換：預設跟系統，按了就記住 */
+  {
+    const TKEY = 'gandan-meta-course-theme', tb = $('#themeBtn'), root = document.documentElement, mq = matchMedia('(prefers-color-scheme: dark)');
+    const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : mq.matches;
+    const label = () => { tb.textContent = isDark() ? '☀ 白底' : '☾ 深色'; tb.setAttribute('aria-pressed', String(isDark())); };
+    tb.addEventListener('click', () => {
+      const next = isDark() ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem(TKEY, next); } catch(e) {}
+      label();
+    });
+    if (mq.addEventListener) mq.addEventListener('change', label);
+    label();
+  }
+
+  /* 2.4 素材與標題 demos */
+  {
+    const onView = (el, fn, th) => {
+      if (!el) return;
+      if (!('IntersectionObserver' in window)) { fn(); return; }
+      const o = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ o.disconnect(); fn(); } }), {threshold: th || .35});
+      o.observe(el);
+    };
+
+    // 1 growth curve draws once in view
+    const curve = $('#m24Curve');
+    if (!reduce) { curve.classList.add('pre'); onView(curve, () => curve.classList.add('draw')); }
+
+    // 2 three-gate checker
+    const CHK = {
+      cat:{g:[['ok','有：貓'],['ok','貓＋室內設計亮點'],['ok','「6 個亮點」夠具體']],
+        old:'貓貓的家 6 個亮點設計', neu:'不用改，第一批先推這支', keep:true, v:['ok','三關都過'],
+        say:'寵物大家都喜歡，而且是<strong>先有貓，才有這個家</strong>，貓跟設計是連在一起的。用影片本身投，不要用預告。'},
+      jap:{g:[['no','只有空間，沒有人或動物'],['mid','Japandi 是內容，但沒東西可以結合'],['no','三房兩廳人人都在寫']],
+        old:'3 房 2 廳 2 衛 Japandi 風格', neu:'三房兩廳的科技宅／三房兩廳的 AI 宅', v:['no','要改標題'],
+        say:'寫三房兩廳的影片一大堆，觀眾為什麼要點你這支？補一個具體設定，像「科技」「AI」，還能跟 Japandi 連起來：<strong>Japandi 的家裡為什麼有 AI？</strong>'},
+      v916:{g:[['ok','有：貓'],['ok','貓＋30 坪的家'],['ok','標題完整']],
+        old:'室內 30 坪帶你看貓貓的家', neu:'改當限動、LINE 社群的預告', v:['mid','三關過了，但換用途'],
+        say:'問題不在標題，在畫面：9:16 直式，<strong>主畫面只佔中間約三分之一，上下都是字</strong>。這種預告適合限動、LINE 社群；打品牌、導去 YT 可以，打填表不適合。'},
+      gray:{g:[['no','沒交代誰住（屋主是兩位男生）'],['mid','極簡黑灰是內容，沒有人可以結合'],['no','沒有輪廓，想像不出畫面']],
+        old:'兩房兩廳兩衛 極簡黑灰風格', neu:'雙人溫馨宅', v:['no','要改標題'],
+        say:'要讓人想像得出<strong>誰住在這裡</strong>。極簡黑灰第一印象是男生會有興趣，就針對男性輪廓下標；但不要直接寫「情侶」，用「雙人溫馨宅」這類說法。'},
+      magic:{g:[['ok','有人：魔術道具師'],['no','職業跟家扯不上關係'],['mid','賣點寫錯了：真正吸引人的是機關']],
+        old:'魔術道具師的家', neu:'室內 20 坪塞了 50 個機關', v:['no','主角換人'],
+        say:'不是魔術師不吸引人，是<strong>職業本身不夠吸引人</strong>。書櫃密室、道具製作桌、隱藏投影機才是賣點：主角換成「機關宅」，魔術師當彩蛋。另一個方向是「魔術師的機關收納法」。（「50 個」是老師舉例，要換成實際數字。）'}
+    };
+    const chk = $('#m24Chk'), gates = $$('#m24Chk .gate'), cbtn = $$('#m24Chk .demo-steps button');
+    const gLine = $('#m24Line'), gOld = $('#m24Old'), gNew = $('#m24New'), gVer = $('#m24Verdict'), gSay = $('#m24Say');
+    const MARK = {ok:'✓', no:'✕', mid:'△'};
+    let ctok = 0;
+    const later = (ms, tok, fn) => setTimeout(() => { if (tok === ctok) fn(); }, ms);
+    function typeIn(el, s, tok, done){
+      if (reduce){ el.textContent = s; done(); return; }
+      const ch = Array.from(s); let i = 0;
+      const t = setInterval(() => {
+        if (tok !== ctok){ clearInterval(t); return; }
+        el.textContent = ch.slice(0, ++i).join('');
+        if (i >= ch.length){ clearInterval(t); done(); }
+      }, 55);
+    }
+    function chkShow(k){
+      const d = CHK[k], tok = ++ctok, step = reduce ? 0 : 420;
+      cbtn.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === k)));
+      gates.forEach((g, i) => { g.className = 'gate'; g.querySelector('.g-dot').textContent = i + 1; g.querySelector('small').textContent = ''; });
+      gLine.style.transition = 'none'; gLine.style.width = '0'; void gLine.offsetWidth; gLine.style.transition = '';
+      gOld.textContent = d.old; gOld.classList.remove('cut');
+      gNew.textContent = ''; gNew.classList.toggle('keep', !!d.keep);
+      gVer.className = 'm24-verdict'; gVer.textContent = ''; gSay.innerHTML = '';
+      d.g.forEach(([s, t], i) => later(step * (i + 1), tok, () => {
+        const g = gates[i];
+        g.className = 'gate ' + s + ' pop';
+        g.querySelector('.g-dot').textContent = MARK[s];
+        g.querySelector('small').textContent = t;
+        gLine.style.width = (i / 2 * 100) + '%';
+      }));
+      later(step * 4, tok, () => {
+        if (!d.keep) gOld.classList.add('cut');
+        later(reduce ? 0 : 450, tok, () => typeIn(gNew, d.neu, tok, () => {
+          gVer.textContent = d.v[1]; gVer.className = 'm24-verdict ' + d.v[0] + ' pop';
+          gSay.innerHTML = d.say;
+        }));
+      });
+    }
+    cbtn.forEach(b => b.addEventListener('click', () => chkShow(b.dataset.k)));
+    onView(chk, () => chkShow('cat'));
+
+    // 3 ladder: the more specific the title, the surer the people it pulls in
+    const ZD = {
+      hook:{r:['掛鉤','承重 20 公斤的掛鉤','可以掛 20 支羽球拍的掛鉤'],
+        s:['直接賣「掛鉤」：誰都可能需要，但沒有人會停下來。',
+           '「承重 20 公斤」：開始有人覺得有點興趣。',
+           '「掛 20 支羽球拍」：打羽球的人一看就有畫面，「這就是我要的」。範圍變小了，被吸住的人卻更確定。']},
+      home:{r:['三房兩廳','三房兩廳 Japandi','年輕夫妻的三房兩廳：雙臉盆、更衣室、電競房'],
+        s:['一大堆影片都在寫三房兩廳，觀眾沒有理由點你這支。',
+           '加上風格：特別想找 Japandi 的人會停下來。',
+           '加上「誰住」：新婚、想換房的夫妻自己就會想像，有雙臉盆、她的更衣室、他的電競房。會找設計公司的，本來就是有特殊需求的人。']}
+    };
+    const LIT1 = [2,5,9,13,17,20,23,27,30,34,38,41,44,46], LIT2 = [5,17,23,30,38,44];
+    const crowd = $('#m24Crowd'); crowd.innerHTML = '<i></i>'.repeat(48);
+    const dots = $$('#m24Crowd i'), rungs = $$('#m24Ladder .rung'), zbtn = $$('#m24Zoom .demo-steps button');
+    let zk = 'hook', ztimers = [];
+    function zSet(s){
+      rungs.forEach((r, i) => { r.classList.toggle('on', i === s); r.classList.toggle('past', i < s); });
+      dots.forEach((d, i) => { d.className = s === 2 ? (LIT2.includes(i) ? 'lv2' : '') : (s === 1 && LIT1.includes(i) ? 'lv1' : ''); });
+      crowd.classList.toggle('s2', s === 2);
+      $('#m24ZSay').textContent = ZD[zk].s[s];
+    }
+    function zPlay(){
+      ztimers.forEach(clearTimeout); ztimers = [];
+      rungs.forEach((r, i) => r.querySelector('span').textContent = ZD[zk].r[i]);
+      if (reduce){ zSet(2); return; }
+      zSet(0); ztimers.push(setTimeout(() => zSet(1), 1800), setTimeout(() => zSet(2), 3600));
+    }
+    rungs.forEach((r, i) => r.addEventListener('click', () => { ztimers.forEach(clearTimeout); zSet(i); }));
+    zbtn.forEach(b => b.addEventListener('click', () => {
+      zk = b.dataset.z; zbtn.forEach(x => x.setAttribute('aria-pressed', String(x === b))); zPlay();
+    }));
+    $('#m24ZPlay').addEventListener('click', zPlay);
+    rungs.forEach((r, i) => r.querySelector('span').textContent = ZD[zk].r[i]); zSet(0);
+    onView($('#m24Zoom'), zPlay, .45);
+
+    // 4 one video fans out into several ad covers
+    const fan = $('#m24Fan');
+    if (!reduce){
+      fan.classList.add('pre');
+      onView(fan, () => fan.classList.add('go'), .4);
+      $('#m24FPlay').addEventListener('click', () => { fan.classList.remove('go'); void fan.offsetWidth; setTimeout(() => fan.classList.add('go'), 60); });
+    } else $('#m24FPlay').hidden = true;
+
+    // 5 landing page scrolls: works first, form last
+    const land = $('#m24Land'), feed = $('#m24Feed'), scr = feed.parentElement, legs = $$('#m24Land .lp-legend li');
+    let ls = 0;
+    function lSet(s){
+      ls = s;
+      const max = Math.max(0, feed.scrollHeight - scr.clientHeight);
+      feed.style.transform = 'translateY(' + (-[0, max * .5, max][s]) + 'px)';
+      legs.forEach((l, i) => l.classList.toggle('on', i === s));
+    }
+    legs[0].classList.add('on');
+    if (!reduce){
+      land.classList.add('anim');
+      onView(land, () => { lSet(0); setInterval(() => { if (!document.hidden) lSet((ls + 1) % 3); }, 2400); });
+      legs.forEach((l, i) => { l.style.cursor = 'pointer'; l.addEventListener('click', () => lSet(i)); });
+    }
+  }
 
   /* §4 creative demos */
   const adSay = {
