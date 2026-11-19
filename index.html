@@ -535,6 +535,36 @@ input[type=range]{accent-color:var(--brand)}
 .vid-steps div:nth-child(3)::after{animation-delay:5s}
 .vid-steps div b{transition:color .3s}
 @keyframes vsLine{0%{transform:scaleX(0);opacity:1}26%{transform:scaleX(1);opacity:1}33%,100%{transform:scaleX(1);opacity:0}}
+
+/* lesson switcher (hero) */
+.lessons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.lessons a{position:relative;display:block;text-decoration:none;color:var(--hero-fg);border:1px solid var(--hero-line);border-radius:4px;padding:12px 30px 12px 14px;transition:border-color .3s,background .3s}
+.lessons a:hover{border-color:var(--brand-2)}
+.lessons a.new{border-color:var(--brand-2);background:color-mix(in srgb,var(--brand-2) 12%,transparent)}
+.lessons small{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--hero-2)}
+.lessons a.new small{color:var(--brand-2)}
+.lessons b{display:block;font-size:14px;font-weight:700;margin-top:4px;line-height:1.45}
+.lessons .go{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--brand-2)}
+@media (max-width:420px){ .lessons{grid-template-columns:1fr} }
+
+/* lesson 2 band */
+.lesson-hero{position:relative;background:var(--hero-bg);color:var(--hero-fg);padding-block:56px 40px;margin-top:64px;z-index:1}
+.lesson-hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;background:repeating-linear-gradient(90deg,transparent 0 79px,color-mix(in srgb,var(--hero-line) 60%,transparent) 79px 80px)}
+.lesson-hero .wrap{position:relative}
+.lh-title{font-size:clamp(2rem,8.5vw,3rem);font-weight:900;letter-spacing:.02em;margin-top:16px;line-height:1.2}
+.lh-title span{display:block;font-size:.4em;font-weight:300;letter-spacing:.24em;color:var(--hero-2);margin-top:12px}
+.lh-flow{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px 0;counter-reset:lf}
+.lh-flow li{counter-increment:lf;display:flex;align-items:center;font-size:13px}
+.lh-flow li + li::before{content:"→";color:var(--hero-line);margin:0 8px}
+.lh-flow a{color:var(--hero-fg);text-decoration:none;border-bottom:1px solid var(--hero-line);padding-bottom:2px;transition:border-color .3s,color .3s}
+.lh-flow a::before{content:counter(lf);font-family:var(--f-mono);font-size:10px;color:var(--brand-2);margin-right:4px}
+.lh-flow a:hover{color:var(--brand-2);border-color:var(--brand-2)}
+.sec-head .no > b{font-variant-numeric:tabular-nums}
+.namecard{display:inline-block;font-size:15px;letter-spacing:.04em;padding:10px 14px;border:1px dashed var(--brand);border-radius:4px;color:var(--brand);background:var(--brand-soft)}
+.sp-say{font-size:14.5px;margin:0}
+.sp-say.bad{color:var(--brand)}
+.sp-say.ok{color:var(--ok)}
+#l2todo .decide + .decide{margin-top:12px}
 </style>
 </head>
 <body>
@@ -563,6 +593,18 @@ input[type=range]{accent-color:var(--brand)}
       <a class="chip" href="#s10">§10 自投</a>
       <a class="chip" href="#s11">§11 前置</a>
       <a class="chip" href="#s12">§12 檢核</a>
+      <a class="chip key" href="#l2">第2堂</a>
+      <a class="chip key" href="#l2todo">作業待辦</a>
+      <a class="chip key" href="#l2sum">第2堂摘要</a>
+      <a class="chip" href="#l2s1">2.1 付款</a>
+      <a class="chip" href="#l2s2">2.2 權限</a>
+      <a class="chip" href="#l2s3">2.3 網域條款</a>
+      <a class="chip" href="#l2s4">2.4 素材</a>
+      <a class="chip" href="#l2s5">2.5 活動</a>
+      <a class="chip" href="#l2s6">2.6 組合</a>
+      <a class="chip" href="#l2s7">2.7 廣告</a>
+      <a class="chip" href="#l2s8">2.8 受眾包</a>
+      <a class="chip" href="#l2s9">2.9 Google</a>
     </div>
   </div>
   <div class="progress" id="progress"></div>
@@ -572,11 +614,11 @@ input[type=range]{accent-color:var(--brand)}
 <header class="hero" id="top">
   <svg class="compass" viewBox="0 0 330 330" aria-hidden="true"><line class="cross" x1="165" y1="0" x2="165" y2="330"/><line class="cross" x1="0" y1="165" x2="330" y2="165"/><circle class="ring2" cx="165" cy="165" r="98"/><circle class="ring" cx="165" cy="165" r="130" transform="rotate(-90 165 165)"/><line class="arm" x1="165" y1="165" x2="165" y2="35"/><circle class="pin" cx="165" cy="165" r="3.5"/><defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E3A184"/><stop offset=".55" stop-color="#C4623C"/><stop offset="1" stop-color="#D9B46E"/></linearGradient></defs></svg>
   <div class="wrap hero-in">
-  <div class="eyebrow">Course notes · 2026-11-05</div>
+  <div class="eyebrow">Course notes · 2026-11-05 ／ 11-19</div>
   <h1 id="title"><span class="tt">Meta 社群廣告投放實戰</span><span class="sub"><mark>課程重點講義</mark></span></h1>
   <div class="stickers" aria-hidden="true"><span class="stk">錄音 3h15m</span><span class="stk">簡報 30 頁</span><span class="stk">重點 13 章</span></div>
   <div class="meta-row">
-    <span>上課 <b class="mono">2026-11-05（四）13:15–16:30</b></span>
+    <span>第1堂 <b class="mono">2026-11-05（四）13:15–16:30</b></span>
     <span>對象 <b>甘丹設計行銷內部</b></span>
     <span>來源 <b>老師簡報 30 頁＋錄音 3 小時 15 分</b></span>
   </div>
@@ -584,6 +626,10 @@ input[type=range]{accent-color:var(--brand)}
     <span><span class="tag tag-g">甘丹</span> 老師針對甘丹給的建議</span>
     <span><span class="tag tag-v">待查證</span> 老師口頭講、還沒對官方文件確認</span>
   </div>
+  <nav class="lessons" aria-label="選擇堂次">
+    <a href="#plan"><small>第1堂 · 11/05</small><b>觀念與代理商報表</b><span class="go">↓</span></a>
+    <a href="#l2" class="new"><small>第2堂 · 11/19 · 最新</small><b>實機操作：從付款到發布</b><span class="go">↓</span></a>
+  </nav>
   <div class="formula" aria-live="off">
     <div class="label">每次開廣告前，先把這句話填完</div>
     <p class="f">我要在<span class="blank"><span class="w" data-k="0">兩週</span></span>內，讓<span class="blank"><span class="w" data-k="1">服務區域內的潛在新客</span></span>，完成<span class="blank"><span class="w" data-k="2">留下預約需求</span></span>，並用<span class="blank"><span class="w" data-k="3">有效名單成本</span></span>判斷成果。</p>
@@ -1150,8 +1196,507 @@ input[type=range]{accent-color:var(--brand)}
   </div>
 </section>
 
+<!-- ===================== 第2堂 ===================== -->
+<section class="lesson-hero" id="l2">
+  <div class="wrap">
+    <div class="eyebrow">Course notes · 2026-11-19 · Lesson 02</div>
+    <h2 class="lh-title">第2堂　實機操作<span>從付款設定到發布第一則廣告</span></h2>
+    <div class="stickers" aria-hidden="true"><span class="stk">錄影 3h21m</span><span class="stk">Meta＋Google</span><span class="stk">重點 9 章</span></div>
+    <div class="meta-row">
+      <span>上課 <b class="mono">2026-11-19（四）13:10–17:02</b></span>
+      <span>來源 <b>課堂錄影 6 段（機器轉錄）＋投影畫面截圖核對</b></span>
+    </div>
+    <ol class="lh-flow" aria-label="這堂課的操作順序">
+      <li><a href="#l2s1">付款</a></li><li><a href="#l2s2">權限</a></li><li><a href="#l2s3">網域條款</a></li><li><a href="#l2s4">挑素材</a></li><li><a href="#l2s5">活動</a></li><li><a href="#l2s6">組合</a></li><li><a href="#l2s7">廣告</a></li><li><a href="#l2s8">受眾包</a></li><li><a href="#l2s9">Google</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 第2堂 作業與待辦 -->
+<section class="block wrap section" id="l2todo">
+  <div class="block-head"><span class="k">TO-DO · LESSON 02</span></div>
+  <h2>第2堂作業與待辦</h2>
+  <p class="lead">課堂上老師交代的作業，加上要請網站公司、老闆處理的事。點卡片跳到詳細章節。</p>
+  <ol class="plan-list">
+    <li><a href="#l2s7"><span class="n">01</span><div><h3>作業：11/25（三）前每人發布一則廣告</h3><p>在甘丹的廣告帳號做完活動、組合、廣告三層並發布；發布前活動開關要關成灰色，不然會開始花錢。老師會進後台檢查。</p></div><span class="go">2.7</span></a></li>
+    <li><a href="#l2s2"><span class="n">02</span><div><h3>把老師加進後台</h3><p>部分管理權限，只勾粉專與廣告帳號；不給財務權限，也不要選「暫時存取」（老師要看約兩個月）。</p></div><span class="go">2.2</span></a></li>
+    <li><a href="#l2s1"><span class="n">03</span><div><h3>打電話通知信用卡公司</h3><p>告知接下來會有 Facebook 廣告費、短時間多筆小額扣款，請不要擋。綁哪張卡先問老闆要不要累積里程。</p></div><span class="go">2.1</span></a></li>
+    <li><a href="#l2s3"><span class="n">04</span><div><h3>請網站公司處理三件事</h3><p>全站隱私權條款＋表單頁放全文與同意勾選；網域驗證與 SSL；先裝 GA4，再用 GTM 埋 Meta 像素。</p></div><span class="go">2.3</span></a></li>
+    <li><a href="#l2s8"><span class="n">05</span><div><h3>建兩個受眾包</h3><p>顧客名單（Excel 轉 CSV 或 TXT）一包、影片觀看受眾一包。</p></div><span class="go">2.8</span></a></li>
+    <li><a href="#l2s9"><span class="n">06</span><div><h3>用公司 Gmail 開 Google Ads</h3><p>信用卡綁公司的。用私人 Gmail 開，帳戶會跟著人走，不跟著甘丹走。</p></div><span class="go">2.9</span></a></li>
+    <li><a href="#l2s3"><span class="n">07</span><div><h3>決定要不要買 Meta 驗證</h3><p>只要客服與藍勾勾，標準版 NT$352／月；要在 Reels 放連結，至少升級方案 NT$1,373／月（課堂當天畫面價格）。</p></div><span class="go">2.3</span></a></li>
+    <li><a href="#l2s4"><span class="n">08</span><div><h3>素材標題改成「有輪廓」的版本</h3><p>第一批先推「貓貓的家 6 個亮點設計」；Japandi、極簡黑灰、魔術師那幾支照老師的方向改標題。</p></div><span class="go">2.4</span></a></li>
+  </ol>
+  <a class="decide" href="#l2s4">
+    <span class="t"><span>Meta 廣告要不要連到 YouTube？</span><span class="go">2.4</span></span>
+    <p>第1堂老師說 Meta 不要直接投 YT 連結（成效差）；這堂挑素材時又建議貓貓那支「連結放 YT」，也說流量廣告可以放 YT 連結、撥一點點預算。這批廣告的終點是 YT 還是官網表單，要先定。</p>
+  </a>
+  <a class="decide" href="#l2s4">
+    <span class="t"><span>預算數字要不要寫進標題？</span><span class="go">2.4</span></span>
+    <p>老師建議用輪廓、不寫數字（寫死會把人排除，也像陷阱）；同仁認為 TA 本來就是 200–300 萬，寫出來剛好排除非 TA。課堂上沒有結論。</p>
+  </a>
+</section>
+
+<!-- 第2堂 摘要 -->
+<div class="summary-band"><section class="block wrap section" id="l2sum">
+  <div class="block-head"><span class="k">SUMMARY · LESSON 02</span></div>
+  <h2>第2堂重點摘要</h2>
+  <p class="lead">九句話看完第2堂。點一行跳到該章節。</p>
+  <ul class="sum-list">
+    <li><a href="#l2s1"><span class="sec">2.1</span><span class="t">付款先設好：台灣、新台幣、信用卡（不要簽帳卡）；先通知銀行，第一個月會小額多筆扣款</span></a></li>
+    <li><a href="#l2s2"><span class="sec">2.2</span><span class="t">財務權限只給一個人、不給代理商；新廣告帳戶的幣別與時區建了就不能改</span></a></li>
+    <li><a href="#l2s3"><span class="sec">2.3</span><span class="t">廣告被拒常因沒有隱私權條款：全站每頁要有，表單頁要放全文＋同意勾選</span></a></li>
+    <li><a href="#l2s4"><span class="sec">2.4</span><span class="t">挑素材看三件事：有人或動物 → 跟內容結合 → 標題；標題要有明確輪廓</span></a></li>
+    <li><a href="#l2s5"><span class="sec">2.5</span><span class="t">活動層：流量 → 連結頁面瀏覽次數；手動設定、競價；目標送出後不能改</span></a></li>
+    <li><a href="#l2s6"><span class="sec">2.6</span><span class="t">組合層：受眾不同才開新組合；各組合上限加總不能超過活動預算；一定要設結束時間</span></a></li>
+    <li><a href="#l2s7"><span class="sec">2.7</span><span class="t">廣告層：用現有貼文或自己上傳；「發布」會三層一起送出，作業要發布但關閉</span></a></li>
+    <li><a href="#l2s8"><span class="sec">2.8</span><span class="t">受眾包：顧客名單一包、影片觀看一包；名單少的類似受眾就一個節點拉到 10%</span></a></li>
+    <li><a href="#l2s9"><span class="sec">2.9</span><span class="t">Google Ads 投 YT：選影片觀看次數、三種格式全勾、出價先抓 5–10 元，成效以 GA4 為主</span></a></li>
+  </ul>
+</section></div>
+
+<!-- 2.1 -->
+<section class="section wrap" id="l2s1">
+  <div class="sec-head"><div class="no"><b>2.1</b></div><h2>付款設定：一切的第一步</h2><div class="dim" aria-hidden="true"><span></span></div></div>
+  <div class="body">
+    <div class="quote">一開始就要先把付款做好，才能做下一步。</div>
+  </div>
+  <h3>設定順序</h3>
+  <div class="body">
+    <ol>
+      <li>商務管理平台 → 帳單和付款 → 付款方式。<strong>國家選台灣、幣別選新台幣</strong>（下拉選單只能捲動找，不能打字）。沒設完整，費用會多一筆換匯費。</li>
+      <li>綁可以直接扣款的<strong>信用卡</strong>；盡量不要綁「帳戶有錢才扣」的簽帳金融卡。</li>
+      <li>持卡人姓名填英文，拼音要跟信用卡上的一致（護照拼音可能不一樣）。</li>
+      <li>綁卡時會試刷，並傳手機驗證碼；完成後等約五分鐘，再到付款方式確認卡片出現。</li>
+      <li>商務管理平台層綁一張「通用付款方式」當備用，每個廣告帳戶再各自指定一張卡；額度用完可以換卡。</li>
+    </ol>
+  </div>
+  <h3>為什麼要先打給信用卡公司</h3>
+  <div class="body">
+    <p>新帳戶的信用額度從零開始，一開始兩三百元就扣一次，之後慢慢變一千、兩千，再到一萬、兩萬。老師說第一個月幾乎都是小額，一到兩週後才變千元級，而且要持續投放才會變大，沒有保證時間。</p>
+    <p>短時間多筆小額扣款，信用卡公司可能判定成盜刷而停止請款。<strong>扣款一停，廣告就停。</strong></p>
+    <div class="callout"><span class="tag tag-g">甘丹</span> 先打電話給信用卡公司：「接下來會有 Facebook 廣告費，短時間多筆交易請不要擋。」綁哪張卡先問老闆要不要累積里程。</div>
+  </div>
+  <h3>對帳看「付款紀錄」，不是廣告報表</h3>
+  <div class="body">
+    <ul>
+      <li>付款方式 → 付款紀錄，右上角先選廣告帳戶，再選日期區間。第一行「待付款項」是已經花了、還沒請款的金額。</li>
+      <li>每筆列出扣款日期、金額、哪張卡、狀態（已付款／失敗）。</li>
+      <li>實際請款金額含 5% 稅，所以會跟廣告報表上的花費對不起來。</li>
+      <li>下載「所有交易」會得到一個壓縮檔（可能十幾張），加總後交給會計。</li>
+      <li>信用額度是 Meta 給的上限，不能自己指定；自己想控制的花費上限，到廣告裡設。</li>
+      <li>只有代理商能月結；儲值金通常也只有代理商在用，一般帳戶直接刷卡。</li>
+    </ul>
+    <p class="note">代理商費用：老師說大約收 5%–10%，其中 5% 是稅，超過的部分才是服務費。自己投拿不到代理商開的發票，付款紀錄可以拿去認列費用，但名目不同，細節問會計。<span class="tag tag-v">待查證</span></p>
+  </div>
+</section>
+
+<!-- 2.2 -->
+<section class="section wrap" id="l2s2">
+  <div class="sec-head"><div class="no"><b>2.2</b></div><h2>商務管理平台：人、資產、廣告帳戶</h2><div class="dim" aria-hidden="true"><span></span></div></div>
+  <div class="body">
+    <div class="pair">
+      <div class="pl"><h4>用戶頁的三類</h4><ul>
+        <li><b>用戶</b>平台裡有誰、各有什麼權限</li>
+        <li><b>合作夥伴</b>別的商務管理平台授權給你的資產；你授權給別人的，這裡看不到</li>
+        <li><b>系統使用者</b>用不到</li></ul></div>
+      <div class="pl"><h4>帳戶頁</h4><ul>
+        <li><b>粉專、IG、Threads</b>WhatsApp 在台灣少用</li>
+        <li><b>先綁粉專和 IG</b>到粉專的「連結帳號」確認兩邊綁好</li>
+        <li><b>Threads</b>要先綁 IG 才會出現</li></ul></div>
+    </div>
+  </div>
+  <h3>權限怎麼給</h3>
+  <div class="body">
+    <ul>
+      <li>財務權限（財務檢視和管理）只留給最大的那個人。<strong>絕對不要給代理商</strong>：他看得到花費，也能動用你的付款資料。</li>
+      <li>一般同仁給「編輯」就好，不要隨便給管理員。有人在粉專端解除 IG，商務管理平台不會跟著解除，兩邊會變成分開、發文也不同步。</li>
+      <li>廣告帳戶權限有兩組開關：上面是建立與管理廣告；下面是付款、看實際刷卡金額、下載報表。沒開下面那組，看得到廣告設定的金額，看不到實際刷了多少。</li>
+      <li>可以只把某一個廣告帳戶指派給某個人，他就只看得到那個帳戶的花費。</li>
+    </ul>
+    <div class="callout"><span class="tag tag-g">甘丹</span> 同仁自己操作時先全部打開，之後要關再關。給老師的權限：部分管理權限，只勾粉專與廣告帳號，不給財務，也不要選「暫時存取」。</div>
+  </div>
+  <h3>邀請同仁進來</h3>
+  <div class="body">
+    <ol>
+      <li>用戶 → 右上角「邀請人員」。</li>
+      <li>Email 要填<strong>對方臉書帳號綁的那個 Email</strong>，不是他平常用的，先問清楚。</li>
+      <li>對方到信箱按「接受邀請」（可能在垃圾郵件裡）；30 天沒接受會自動取消。</li>
+      <li>接受後重新整理，再指派資產：粉專全開、廣告帳號全開（含下面那組）；像素之後再開；IG 已和粉專綁好就不用另外勾。</li>
+    </ol>
+  </div>
+  <h3>新增廣告帳戶：建了就不能改</h3>
+  <div class="body">
+    <div class="tbl"><table>
+      <thead><tr><th>設定</th><th>選什麼</th><th>選錯會怎樣</th></tr></thead>
+      <tbody>
+        <tr><td data-label="設定">幣別</td><td data-label="選什麼"><strong>新台幣</strong></td><td data-label="選錯會怎樣">先用美金計價、再換台幣請款，多兩段手續費</td></tr>
+        <tr><td data-label="設定">時區</td><td data-label="選什麼"><strong>Asia/Taipei</strong></td><td data-label="選錯會怎樣">排程「晚上 8 點」會變成別的地區的 8 點</td></tr>
+        <tr><td data-label="設定">付款資料</td><td data-label="選什麼">選商務管理平台已設好的那組（台灣、新台幣）</td><td data-label="選錯會怎樣">跟帳戶幣別不一致，同樣多換匯費</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>幣別和時區建好就不能改，只能重開一個帳戶。</li>
+      <li>建立時要選「誰使用這個廣告帳號」：商務管理平台和廣告帳戶是半獨立的，擁有平台不代表管得到每個廣告帳戶。</li>
+      <li>每個商務管理平台一開始只能開一個廣告帳戶，花費變多才能加到兩三個以上；代理商可以申請幾十個。</li>
+      <li>帳戶被封可能永遠開不回來，裡面的廣告數據也一起消失，只能靠另一個帳戶。這也是老師建議買 Meta 驗證的原因（見 <a href="#l2s3">2.3</a>）。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 2.3 -->
+<section class="section wrap" id="l2s3">
+  <div class="sec-head"><div class="no"><b>2.3</b> <span class="tag tag-g">甘丹</span></div><h2>網域、隱私權條款、Meta 驗證</h2><div class="dim" aria-hidden="true"><span></span></div></div>
+  <div class="body">
+    <div class="callout">甘丹目前的廣告會被拒登，老師判斷原因是<strong>網頁沒有隱私權條款</strong>，被拒也會拉低廣告品質。到達頁沒有條款，會被當成惡意收集個資。</div>
+  </div>
+  <h3>要請網站公司做的事</h3>
+  <div class="body">
+    <ol>
+      <li>全站每一頁底部加「隱私權條款」連結（新網站有，現行網站沒有）。</li>
+      <li>表單頁<strong>直接顯示條款全文</strong>，不是只放連結，下面加「我同意隱私權條款」勾選。條款可以參考別人的，但要改成甘丹自己的內容。</li>
+      <li>網域驗證：商務管理平台 → 網域 → 建立網域，放進官網網址，再完成驗證。</li>
+      <li>確認網域有 SSL 憑證（網址是 https）。</li>
+      <li>先裝 GA4，再用 GTM 把 Meta 像素埋進網站。沒有像素，廣告層的「網站事件」追蹤就設不了（見 <a href="#l2s7">2.7</a>）。</li>
+    </ol>
+  </div>
+  <h3>Meta 驗證（藍勾勾）</h3>
+  <div class="body">
+    <p>老師的說法是「花小錢辦大事」：帳戶被系統誤判鎖住時，有買的才聯絡得到真人客服；沒買的話，求爺爺告奶奶都找不到人。</p>
+    <div class="tbl"><table>
+      <thead><tr><th>方案</th><th>月費</th><th>在 Reels 加入連結</th></tr></thead>
+      <tbody>
+        <tr><td data-label="方案">標準版</td><td data-label="月費" class="mono">NT$352</td><td data-label="在 Reels 加入連結">—</td></tr>
+        <tr><td data-label="方案">升級方案</td><td data-label="月費" class="mono">NT$1,373</td><td data-label="在 Reels 加入連結">每月 2 部</td></tr>
+        <tr><td data-label="方案">高級方案</td><td data-label="月費" class="mono">NT$4,118</td><td data-label="在 Reels 加入連結">每月 4 部</td></tr>
+        <tr><td data-label="方案">頂級方案</td><td data-label="月費" class="mono">NT$13,729</td><td data-label="在 Reels 加入連結">每月 8 部</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">價格與方案內容取自課堂當天（2026-11-19）投影畫面，之後可能調整。</p>
+    <ul>
+      <li>只要藍勾勾與客服，標準版就夠；要在 Reels 放官網或 YT 連結，至少要升級方案。老師的建議：「一個月兩支就好，我們不貪。」</li>
+      <li>老師把「每月 2 部」解讀成一個月最多兩個不同網址、影片數量不限，但畫面寫的是「部」。<span class="tag tag-v">待查證</span></li>
+      <li>能不能放 LINE 官方帳號的連結，老師也不確定：Meta 擋外站擋得很兇，可能被判違反廣告規範。<span class="tag tag-v">待查證</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 2.4 -->
+<section class="section wrap" id="l2s4">
+  <div class="sec-head"><div class="no"><b>2.4</b> <span class="tag tag-g">甘丹</span></div><h2>挑素材與下標題</h2><div class="dim" aria-hidden="true"><span></span></div></div>
+  <div class="body">
+    <ul>
+      <li><strong>挑本來就表現好的素材</strong>，事半功倍；本來表現不好的，推了也很難有結果。可以再搭一支表現普通的，看出兩者落差。</li>
+      <li>YT 影片還在自然成長時，先不要用 Meta 導流；等成長曲線停下來再推，避免 Meta 進來的觀眾表現不好，拖累 YT 演算法。</li>
+    </ul>
+  </div>
+  <h3>素材三要素（照片、影片都適用）</h3>
+  <div class="body">
+    <div class="qa">
+      <div><b>01</b>有沒有人，或動物</div>
+      <div><b>02</b>這個人或動物，有沒有跟要呈現的內容結合</div>
+      <div><b>03</b>最後才是標題：有前兩項，才想得出好標題</div>
+    </div>
+  </div>
+  <h3>現場逐支評分</h3>
+  <div class="body">
+    <div class="tbl wide"><table>
+      <thead><tr><th>素材</th><th>老師的評語</th><th>怎麼用／怎麼改</th></tr></thead>
+      <tbody>
+        <tr><td data-label="素材">貓貓的家 6 個亮點設計</td><td data-label="老師的評語"><strong>最好</strong>：有動物、內容是室內設計、標題完整</td><td data-label="怎麼用／怎麼改">第一批先推這支。不要下預告片：正片前面本來就有預告，點進去又是預告</td></tr>
+        <tr><td data-label="素材">3 房 2 廳 2 衛 Japandi</td><td data-label="老師的評語">只有內容沒有人；三房兩廳人人都是，Japandi 還不夠聚焦</td><td data-label="怎麼用／怎麼改">加上輪廓，例：「三房兩廳的科技宅」</td></tr>
+        <tr><td data-label="素材">室內 30 坪帶你看貓貓的家</td><td data-label="老師的評語">9:16，但主畫面只佔中間約三分之一，上下都是字</td><td data-label="怎麼用／怎麼改">適合限動、LINE 社群當預告；不適合拿來衝填表</td></tr>
+        <tr><td data-label="素材">兩房兩廳 極簡黑灰</td><td data-label="老師的評語">沒交代誰住；極簡黑灰第一印象是男生會有興趣</td><td data-label="怎麼用／怎麼改">針對男性輪廓下標，例：「雙人溫馨宅」（避免直接寫情侶）</td></tr>
+        <tr><td data-label="素材">魔術道具師的家</td><td data-label="老師的評語">職業本身吸引力不夠，真正的賣點是房子裡的機關</td><td data-label="怎麼用／怎麼改">「室內 20 坪塞了 50 個機關」「魔術師的機關收納法」</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <h3>標題要有明確輪廓</h3>
+  <div class="body">
+    <ul>
+      <li>範圍太大就跟大家一樣。有特殊需求的人才會找設計公司，沒有特殊需求的人自己裝潢就好。</li>
+      <li>越具體，越能吸到對的人：「掛鉤」→「承重 20 公斤的掛鉤」→「可以掛 20 支羽球拍的掛鉤」。</li>
+      <li>輪廓不清楚，後面設定受眾會更痛苦。</li>
+      <li><strong>同一支影片可以重複投</strong>：只換封面和標題（後台上傳的素材可以換封面），對準不同族群。例：奶油風對年輕夫妻講雙臉盆、更衣室，對另一群講電競房。</li>
+      <li>預算數字要不要寫進標題，課堂上沒有結論（見 <a href="#l2todo">待拍板</a>）。</li>
+    </ul>
+  </div>
+  <h3>廣告點進去的那一頁</h3>
+  <div class="body">
+    <ul>
+      <li>一點進去就是表單，可能把人嚇跑。表單上方先放同風格的作品圖，往下滑才是表單，像一頁式廣告。</li>
+      <li>這一期主打奶油風，頁面上方就全放奶油風；一段時間換一個主題，看哪一種詢問多，不要所有主題一起放。</li>
+      <li>自己做表單頁也可以，但要放在甘丹同一個網域、帶隱私權條款。風險是：工程師嵌錯程式碼可能讓整站壞掉；還要有後台（CRM）接收資料，不然送出的資料不知道跑去哪。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 2.5 -->
+<section class="section wrap" id="l2s5">
+  <div class="sec-head"><div class="no"><b>2.5</b></div><h2>建立廣告活動（活動層）</h2><div class="dim" aria-hidden="true"><span></span></div></div>
+  <div class="body">
+    <ol>
+      <li>帳號 → 廣告帳號 → 甘丹設計 →「在廣告管理員中開啟」→ 建立。左邊欄先不要亂點，點出去再回來很麻煩。</li>
+      <li>目標選「流量」。銷售、應用程式推廣用不到；潛在顧客成本偏高；互動適合私訊與影片觀看。</li>
+      <li>設定方式選<strong>手動</strong>，不要選建議設定：建議設定會全部幫你開好，錢會花成無底洞。</li>
+      <li>購買類型選「競價」，不要選「預訂」（老師說選預訂廣告會出不去）。</li>
+      <li>命名（見下方）。</li>
+      <li>預算：選「行銷活動預算」＋單日預算，出價策略「最多數量」。</li>
+      <li>A/B 測試不要開；特殊廣告類別不要選。</li>
+    </ol>
+  </div>
+  <h3>流量的成效目標：選「頁面瀏覽」</h3>
+  <div class="body">
+    <div class="tbl"><table>
+      <thead><tr><th>選項</th><th>怎麼算</th><th>甘丹</th></tr></thead>
+      <tbody>
+        <tr><td data-label="選項">連結點擊次數</td><td data-label="怎麼算">點了就算，點錯馬上跑掉也算</td><td data-label="甘丹">—</td></tr>
+        <tr><td data-label="選項">連結頁面瀏覽次數</td><td data-label="怎麼算">網頁真的打開、人留在頁面上才算</td><td data-label="甘丹"><strong>選這個</strong>：目的是讓人留下來填表</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <h3>命名規則</h3>
+  <div class="body">
+    <p class="namecard mono">2611_流量_填表單_預算_30</p>
+    <p>年月 → 目標 → 目的 → 預算 → 天數。一眼就看得出何時開、要什麼、花多少。組合和廣告也要命名：組合寫「受眾＋時間＋預算」（例：<span class="mono">女生_1129–1215</span>），廣告標「前台」（現有貼文）或「後台」（自己上傳）。</p>
+  </div>
+  <h3>預算與注意事項</h3>
+  <div class="body">
+    <ul>
+      <li>目標送出後就不能改，要改只能新開一個活動。新增前先想清楚目的。</li>
+      <li>預算要配合組合數：5 個組合一天 100 元，連曝光都不夠，更別說轉換。老師的抓法：<strong>3 個組合，單日 500 元起跳</strong>。預算太低 Meta 也會跳警示。</li>
+      <li>畫面上的提醒：單日預算設 NT$400 時，Meta 單日最多可能花到 NT$700，一週上限 NT$2,800（平均回每天 400）。</li>
+      <li>A/B 測試要預算夠多才有意義；想測就自己開兩個組合對照（老師自己也很少開）。</li>
+      <li>特殊廣告類別（房地產、金融、就業、選舉）：室內設計不算。只有幫建商推建案才要選房地產並認證，可能要附合作合約。選舉廣告不能幫人代下，帳號會被封。</li>
+      <li>右上角的「行銷活動分數」照規則設定才會高；設定亂到廣告送不出去會扣分。<span class="tag tag-v">待查證</span></li>
+      <li>每次改完都要按「發布」，沒發布就永遠不會上線。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 2.6 -->
+<section class="section wrap" id="l2s6">
+  <div class="sec-head"><div class="no"><b>2.6</b></div><h2>廣告組合層：預算分配與受眾</h2><div class="dim" aria-hidden="true"><span></span></div></div>
+  <div class="body">
+    <div class="pair">
+      <div class="pl"><h4>成果</h4><ul>
+        <li><b>轉換位置：網站</b>要貼官網表單網址</li>
+        <li><b>成效目標</b>跟活動目標一致，在頁面瀏覽、連結點擊之間選；選別的會衝突</li>
+        <li><b>歸因設定</b>用標準，不用動</li></ul></div>
+      <div class="pl"><h4>投放</h4><ul>
+        <li><b>組合花費上限</b>打勾，選 NT 值，不要選百分比</li>
+        <li><b>開始時間</b>至少在 30 分鐘到 1 小時之後</li>
+        <li><b>結束時間</b>一定要設，不然會一直跑一直花</li>
+        <li><b>版位</b>不要動</li></ul></div>
+    </div>
+  </div>
+  <h3>預算怎麼分：組合加起來不能超過活動</h3>
+  <div class="body">
+    <p>活動單日 400 元，底下所有組合加起來一天就只能花 400。第一個組合設 400，第二個組合就分不到錢。拉拉看：</p>
+    <div class="tool" id="split">
+      <div class="tt">AD SET SPLIT · 課堂例子：活動 400，分 100／200 或 200／200</div>
+      <div class="row"><label for="sp-c">活動單日預算 <b id="sp-c-v">NT$400</b></label><input id="sp-c" type="range" min="300" max="2000" step="50" value="400"></div>
+      <div class="row"><label for="sp-a">組合 A 上限 <b id="sp-a-v">NT$400</b></label><input id="sp-a" type="range" min="0" max="2000" step="50" value="400"></div>
+      <div class="row"><label for="sp-b">組合 B 上限 <b id="sp-b-v">NT$0</b></label><input id="sp-b" type="range" min="0" max="2000" step="50" value="0"></div>
+      <div class="out"><div><small>已分配</small><b id="sp-sum">NT$400</b></div><div><small>還能分</small><b id="sp-left">NT$0</b></div></div>
+      <p class="sp-say" id="sp-say" aria-live="polite"></p>
+      <p class="note" id="sp-meta"></p>
+    </div>
+  </div>
+  <h3>什麼時候要開新組合</h3>
+  <div class="body">
+    <ul>
+      <li><strong>受眾不同才開新組合</strong>（性別、地點、興趣不一樣）。受眾一樣，就一個組合放多支素材，共用預算。</li>
+      <li>例：保養品每日 1,000 元，男生 500、女生 500，就是兩個組合。</li>
+      <li>這段是全場最容易混亂的地方，作業時邊做邊對照。</li>
+    </ul>
+  </div>
+  <h3>受眾設定</h3>
+  <div class="body">
+    <div class="tbl wide"><table>
+      <thead><tr><th>項目</th><th>怎麼設</th><th>提醒</th></tr></thead>
+      <tbody>
+        <tr><td data-label="項目">高效速成+（Advantage+）</td><td data-label="怎麼設">確認受眾區右上角顯示「已開啟」</td><td data-label="提醒">自動找高點擊、高轉換的人，一定要開</td></tr>
+        <tr><td data-label="項目">地點</td><td data-label="怎麼設">不設＝全台灣。只打林口要選「區域」；地標要地址被 Meta 抓得到，才能畫半徑</td><td data-label="提醒">地點不能全刪，要先加新的再刪舊的</td></tr>
+        <tr><td data-label="項目">年齡</td><td data-label="怎麼設">先看自己的受眾，偏大就設 25 歲以上</td><td data-label="提醒">第1堂：室內設計不建議下探 30 歲以下</td></tr>
+        <tr><td data-label="項目">語言</td><td data-label="怎麼設">繁體中文（台灣）</td><td data-label="提醒">不設會投到在台灣的外籍移工</td></tr>
+        <tr><td data-label="項目">詳細目標</td><td data-label="怎麼設">先問 GPT 列出 Meta 受眾類別，再搜「室內設計」「居家裝修」</td><td data-label="提醒">精品宅可以放高級社區名稱，搜得到就能放</td></tr>
+        <tr><td data-label="項目">自訂受眾</td><td data-label="怎麼設">放「包含」或「排除」都可以</td><td data-label="提醒">受眾包要先建好（見 <a href="#l2s8">2.8</a>）</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout v">不要把 Chanel、Dior 這類精品品牌當興趣：老師說會吸到 FB 直播賣精品的那群人，不是買房裝潢的人。</div>
+  </div>
+  <h3>值規則：願意為某族群多花多少</h3>
+  <div class="body">
+    <ul>
+      <li>位置在組合層「建立規則組合」，條件有年齡、性別、裝置、平台、作業系統、地點、受眾、版位。</li>
+      <li>意思是「願意多花多少錢」：女生 +20%，是多花約 20% 預算爭取女生看到，不是只讓 20% 的女生看到。</li>
+      <li>裝置、平台、作業系統少用，鎖下去曝光會非常低。條件不要疊太多，圈圈越疊受眾越小。</li>
+      <li>能存下來重複用的條件放受眾包；受眾包做不到的單一條件（例如性別），才用值規則。</li>
+      <li>畫面提示：同時設年齡、性別「控制項」，會減少值規則的效果。</li>
+    </ul>
+  </div>
+  <h3>送出前三項檢查</h3>
+  <div class="body">
+    <div class="qa">
+      <div><b>受眾</b>受眾設定沒問題</div>
+      <div><b>預算</b>預算與起訖時間沒問題</div>
+      <div><b>高效速成+</b>受眾頁、版位頁兩處都是開啟</div>
+    </div>
+    <p class="note">「此廣告組合含有與金融商品和服務相關的廣告」不要勾。版位一選，高效速成+ 版位就會被關掉。廣告商和出資者要選好（第1堂身分驗證那一段）。</p>
+  </div>
+</section>
+
+<!-- 2.7 -->
+<section class="section wrap" id="l2s7">
+  <div class="sec-head"><div class="no"><b>2.7</b></div><h2>廣告層與發布</h2><div class="dim" aria-hidden="true"><span></span></div></div>
+  <div class="body">
+    <div class="pair">
+      <div class="pl"><h4>前台：使用現有貼文</h4><ul>
+        <li><b>選已發布的貼文</b>老師叫它「前台」</li>
+        <li><b>先選位置</b>要投 IG 就切到 IG 欄位選 IG 的貼文，不要選 FB 的</li>
+        <li><b>不能換封面</b>貼文已經做好了</li></ul></div>
+      <div class="pl"><h4>後台：建立廣告</h4><ul>
+        <li><b>自己上傳圖片或影片</b>老師叫它「後台」</li>
+        <li><b>最常用兩種</b>單一圖像或影片、輪播</li>
+        <li><b>可以設封面</b>同一支影片換封面重複投</li></ul></div>
+    </div>
+    <ul>
+      <li><strong>身分非常重要，不能選錯</strong>：選甘丹粉專，確認 IG 也有對到；有綁 Threads 會一起帶進來。</li>
+      <li>合作廣告（夥伴關係廣告）是跟別人合作、對方給你授權編碼時才用；自己的貼文不用開。</li>
+      <li>素材有版權音樂會被偵測：清單出現驚嘆號，傳得上去但不能上線，要換素材。</li>
+      <li>網址放在「網站網址」欄，不是「顯示連結」欄。</li>
+      <li>「語言」的自動翻譯先不要開，會翻成其他語言、觸及東南亞用戶。</li>
+      <li>最下面的廣告追蹤，要等網站埋好像素才設得了（見 <a href="#l2s3">2.3</a>）。現在不是「不用設」，是「還沒辦法設」。</li>
+    </ul>
+  </div>
+  <h3>發布、預覽、關閉、捨棄</h3>
+  <div class="body">
+    <div class="tbl"><table>
+      <thead><tr><th>按鈕</th><th>會發生什麼</th></tr></thead>
+      <tbody>
+        <tr><td data-label="按鈕"><strong>發布</strong></td><td data-label="會發生什麼">活動、組合、廣告三層一起送出，馬上上線，<strong>沒有第二次確認</strong>；之後只能暫停或刪除</td></tr>
+        <tr><td data-label="按鈕">預覽</td><td data-label="會發生什麼">按鈕顯示「預覽」而不是「發布」，代表還有東西沒填完，會列出缺哪些</td></tr>
+        <tr><td data-label="按鈕">關閉（左上角 X）</td><td data-label="會發生什麼">不發布，存成草稿，只有自己看得到</td></tr>
+        <tr><td data-label="按鈕">捨棄草稿</td><td data-label="會發生什麼">全部取消</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <h3>作業：11/25（三）前完成 <span class="tag tag-g">甘丹</span></h3>
+  <div class="body">
+    <div class="callout">每人在甘丹的廣告帳號做一則廣告並<strong>發布</strong>（不發布老師看不到）。發布前把活動開關關掉：要是灰色，不能是綠色，不然會開始花錢，設錯就白花。</div>
+    <p class="check-count" id="hw-count">已完成 0 / 6</p>
+    <div class="meter" aria-hidden="true"><i id="hw-meter"></i></div>
+    <ul class="check" id="hwlist">
+      <li><label><input type="checkbox" id="h1"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>加老師進後台</strong>：部分權限，只勾粉專與廣告帳號</span></label></li>
+      <li><label><input type="checkbox" id="h2"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>活動</strong>：流量、連結頁面瀏覽次數、手動、競價、照規則命名</span></label></li>
+      <li><label><input type="checkbox" id="h3"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>組合</strong>：受眾、花費上限、起訖時間、高效速成+ 兩處開啟</span></label></li>
+      <li><label><input type="checkbox" id="h4"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>廣告</strong>：身分選對、前台或後台素材、網址放對欄位</span></label></li>
+      <li><label><input type="checkbox" id="h5"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>試建一個受眾包</strong>：影片觀看或顧客名單</span></label></li>
+      <li><label><input type="checkbox" id="h6"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span><strong>活動開關關成灰色後發布</strong></span></label></li>
+    </ul>
+    <p class="note">勾選只存在你這支手機或電腦的瀏覽器裡，不會同步給其他同仁。</p>
+  </div>
+</section>
+
+<!-- 2.8 -->
+<section class="section wrap" id="l2s8">
+  <div class="sec-head"><div class="no"><b>2.8</b></div><h2>受眾包：自訂、類似、儲備</h2><div class="dim" aria-hidden="true"><span></span></div></div>
+  <div class="body">
+    <p>路徑：廣告管理員左側「受眾」→ 建立。</p>
+    <div class="tbl"><table>
+      <thead><tr><th>類型</th><th>來源</th><th>怎麼用</th></tr></thead>
+      <tbody>
+        <tr><td data-label="類型">自訂受眾</td><td data-label="來源">自己有的名單、網站；或在 Meta 上接觸過你的人（影片、IG、粉專）</td><td data-label="怎麼用">再行銷、排除</td></tr>
+        <tr><td data-label="類型">類似受眾</td><td data-label="來源">拿自訂受眾當種子，找標籤相近的人</td><td data-label="怎麼用">找新客</td></tr>
+        <tr><td data-label="類型">儲備受眾</td><td data-label="來源">把設定存起來</td><td data-label="怎麼用">下次新增廣告直接套用</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <h3>甘丹先建兩包 <span class="tag tag-g">甘丹</span></h3>
+  <div class="body">
+    <ol>
+      <li><strong>影片觀看受眾</strong>：來源選 Meta → 影片（甘丹影片多，最適合）。</li>
+      <li><strong>顧客名單</strong>：Excel 轉成 CSV 或 TXT（老師推薦 TXT），一個分頁存一個檔。Meta 會自動辨識電話、Email，按「對應識別資料」→ 上傳。名單筆數不多就合成一包。</li>
+      <li>狀態變「完成」才能在組合裡選；還在「建立中」先別選。</li>
+    </ol>
+    <p class="note">想打完全陌生的人，不一定要做自訂受眾。自己的名單和類似受眾哪個好，沒有定論，要測過才知道。</p>
+  </div>
+  <h3>類似受眾</h3>
+  <div class="body">
+    <ul>
+      <li>受眾 → 建立 → 類似受眾 → 選來源（剛建好的自訂受眾）。</li>
+      <li>規模是 1%–10% 的滑桿，可以切成幾個節點（例如 1–5%、5–10%）：近的找不到客人，再往外擴。</li>
+      <li><strong>名單只有一兩千筆，切再多節點也沒用</strong>：選一個節點直接拉到 10%，按「建立廣告受眾」，跑完再到組合裡選。</li>
+      <li>名單有幾百萬筆（像 momo、PChome）才需要分節點，不然 10% 太大、太燒錢。</li>
+      <li>百分比老師是用名單筆數舉例；畫面說明寫的是「與來源最相似的用戶」占多少，母數是什麼要再查。<span class="tag tag-v">待查證</span></li>
+      <li>畫面提示：新的類似受眾建立時不用選地點，會用廣告組合裡的地點。</li>
+    </ul>
+  </div>
+  <h3>用包含／排除做對照</h3>
+  <div class="body">
+    <p>手上有 A、B 兩個受眾：第一個組合排除 B、第二個組合排除 A，就能看出哪個受眾成效好。</p>
+  </div>
+</section>
+
+<!-- 2.9 -->
+<section class="section wrap" id="l2s9">
+  <div class="sec-head"><div class="no"><b>2.9</b></div><h2>Google Ads：下 YouTube 廣告</h2><div class="dim" aria-hidden="true"><span></span></div></div>
+  <div class="body">
+    <div class="callout"><span class="tag tag-g">甘丹</span> 用<strong>甘丹公司的 Gmail</strong> 申請，信用卡綁公司的。用私人 Gmail 開，帳戶會跟著人走，不跟著甘丹走。</div>
+    <ul>
+      <li>付款：左側「帳單」→「設定」→「付款方式」，國家、幣別不能選錯。</li>
+      <li>新帳戶第一步就是新增廣告活動，其他設定之後才開得出來。</li>
+    </ul>
+    <div class="callout v">Google 的費用會累積之後一次扣，沒常看花費可能一次爆衝。一開始就設好每日預算和結束日期，定期看。</div>
+  </div>
+  <h3>目標別選錯</h3>
+  <div class="body">
+    <div class="tbl wide"><table>
+      <thead><tr><th>你要的</th><th>選哪個</th><th>是什麼</th></tr></thead>
+      <tbody>
+        <tr><td data-label="你要的">YT 影片被更多人看</td><td data-label="選哪個"><strong>YouTube 觸及／觀看次數與參與度 → 影片觀看次數</strong></td><td data-label="是什麼">類似在 YT 影片下按「推廣」</td></tr>
+        <tr><td data-label="你要的">搜尋時出現在最上面</td><td data-label="選哪個">網站流量</td><td data-label="是什麼">關鍵字廣告：搜「室內設計」時出現的「贊助」結果</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>YouTube 底下三個目標：觀看次數（衝 TrueView，老師說看到 75% 以上才算 <span class="tag tag-v">待查證</span>）、觸及（接觸最多人）、訂閱與參與（訂閱、留言、按讚、分享）。<strong>甘丹選影片觀看次數。</strong></li>
+      <li>表單網址已經放在 YT 說明欄，不用為了表單去選網站流量。</li>
+    </ul>
+  </div>
+  <h3>活動設定（一頁式）</h3>
+  <div class="body">
+    <ol>
+      <li>購買方式：競價。</li>
+      <li>廣告格式三種都勾：可略過的串流內廣告、動態內廣告、Shorts 廣告。</li>
+      <li>地區台灣、語言繁體中文。</li>
+      <li>出價策略：單次收視出價（看一次付多少錢）。</li>
+      <li>預算：活動總預算或每日預算，加上起訖日期。</li>
+      <li>聯播網加上「Google 聯播網」（會出現在 Google 合作的其他平台，看不到是哪些）。</li>
+      <li>相關影片：放同風格案例的 YT 連結（奶油風就找奶油風案例），會出現在推薦影片裡。</li>
+      <li>排程時段不用動，除非只想打白天。</li>
+    </ol>
+  </div>
+  <h3>廣告群組</h3>
+  <div class="body">
+    <ul>
+      <li>目標對象可以先不管，甘丹還沒有自己的受眾資料。</li>
+      <li>興趣：先請 GPT 規劃，再到 Google 的類別慢慢找。Google 沒有 Meta 的「室內設計」，要找「室內裝修」「居家佈置」這類。</li>
+      <li>關鍵字大字、小字都放：大字「室內設計」「室內裝潢」「裝潢」；小字「奶油風室內設計」「奶油風裝潢」。</li>
+      <li>網站欄放<strong>作品集</strong>（表單已經在說明欄）。</li>
+      <li>影片最多放 5 支：第一支是主影片，系統會多推表現好的那支。</li>
+      <li>出價先抓 5–10 元，旺季（過年前）大約 10 元。先看老闆 Google 帳戶目前一次點擊多少錢，再往上推。老師這裡點擊出價與單次收視出價混著講。<span class="tag tag-v">待查證</span></li>
+      <li>按「製作廣告活動」送出。綠燈正常；黃燈代表有東西卡住、投不出去，點進去看，或刪掉重來。送出後目標不能改。</li>
+    </ul>
+  </div>
+  <h3>成效看哪裡</h3>
+  <div class="body">
+    <p>以 GA4 為主，Google Ads 後台交叉比對。GA 免費版抓不到 100% 的資料，兩邊數字有落差是正常的。甘丹同時投 Meta，串進同一個 GA4 才能放在一起比。</p>
+  </div>
+</section>
+
 <footer class="foot wrap">
-  <p>整理自 2026-11-05 Meta 社群廣告投放實戰教學：老師簡報、課堂錄音（機器轉錄）、手繪漏斗圖。內含代理商報表數字，僅供甘丹內部使用。</p>
+  <p>第1堂整理自 2026-11-05 Meta 社群廣告投放實戰教學：老師簡報、課堂錄音（機器轉錄）、手繪漏斗圖。第2堂整理自 2026-11-19 實機操作課：課堂錄影 6 段（機器轉錄）與投影畫面截圖；閒聊未收錄，轉錄聽不清的地方已標「待查證」。內含代理商報表數字與後台畫面資訊，僅供甘丹內部使用。</p>
 </footer>
 </main>
 
@@ -1172,7 +1717,7 @@ input[type=range]{accent-color:var(--brand)}
 
   /* progress + scrollspy + fab */
   const prog = $('#progress'), where = $('#where'), fab = $('#fab');
-  const secs = ['plan','summary','s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12'].map(id => document.getElementById(id));
+  const secs = $$('#chips .chip').map(c => document.getElementById(c.getAttribute('href').slice(1))).filter(Boolean);
   const chips = new Map($$('#chips .chip').map(c => [c.getAttribute('href').slice(1), c]));
   let current = '';
   function onScroll(){
@@ -1193,7 +1738,13 @@ input[type=range]{accent-color:var(--brand)}
         strip.scrollTo({left: c.offsetLeft - strip.clientWidth/2 + c.offsetWidth/2, behavior: reduce ? 'auto' : 'smooth'});
       } else where.textContent = 'Meta 廣告課程';
     }
-    const sumBottom = document.getElementById('summary').getBoundingClientRect().bottom;
+    const inL2 = current.indexOf('l2') === 0;
+    const sumId = inL2 ? 'l2sum' : 'summary', goId = inL2 ? 'l2todo' : 'plan';
+    if (fab.getAttribute('href') !== '#' + goId){
+      fab.setAttribute('href', '#' + goId);
+      fab.textContent = inL2 ? '↑ 第2堂待辦' : '↑ 回到摘要';
+    }
+    const sumBottom = document.getElementById(sumId).getBoundingClientRect().bottom;
     fab.classList.toggle('off', sumBottom > 0);
   }
   addEventListener('scroll', onScroll, {passive:true}); onScroll();
@@ -1366,6 +1917,49 @@ input[type=range]{accent-color:var(--brand)}
     });
   });
   count();
+
+  /* 2.6 ad set split */
+  const spc = $('#sp-c'), spa = $('#sp-a'), spb = $('#sp-b');
+  function split(){
+    const c = +spc.value, a = +spa.value, b = +spb.value, sum = a + b, left = c - sum;
+    $('#sp-c-v').textContent = fmt(c); $('#sp-a-v').textContent = fmt(a); $('#sp-b-v').textContent = fmt(b);
+    $('#sp-sum').textContent = fmt(sum);
+    $('#sp-left').textContent = left < 0 ? '超出 ' + fmt(-left) : fmt(left);
+    const say = $('#sp-say');
+    let t, bad = true;
+    if (left < 0) t = '兩個組合加起來超過活動預算，系統只會花到活動的上限，後面的組合會分不到錢。';
+    else if (a === 0 || b === 0) t = (a === 0 ? '組合 A' : '組合 B') + ' 一毛都分不到：上限設 0，這個組合等於沒在跑。';
+    else if (Math.min(a, b) < 100) t = '有組合每天不到 NT$100，曝光可能都不夠，更別說轉換。';
+    else { t = '分配合理：兩個組合都有錢跑，加總沒超過活動預算。'; bad = false; }
+    say.textContent = t; say.className = 'sp-say ' + (bad ? 'bad' : 'ok');
+    $('#sp-meta').textContent = '課堂畫面：單日預算 NT$400 時，Meta 單日最多可能花到 NT$700、一週上限 NT$2,800。照同樣比例，' + fmt(c) + ' 約是單日最多 ' + fmt(c * 1.75) + '、一週上限 ' + fmt(c * 7) + '（比例是推算，以後台顯示為準）。';
+    bump($('#sp-sum')); bump($('#sp-left'));
+  }
+  [spc, spa, spb].forEach(x => x.addEventListener('input', split)); split();
+
+  /* 2.7 homework checklist (per-viewer) */
+  const HKEY = 'gandan-meta-course-hw2';
+  let hsaved = {};
+  try { hsaved = JSON.parse(localStorage.getItem(HKEY) || '{}') || {}; } catch(e) {}
+  const hboxes = $$('#hwlist input');
+  let hwasAll = null;
+  const hcount = () => {
+    const n = hboxes.filter(b => b.checked).length, all = n === hboxes.length;
+    $('#hw-count').textContent = (all ? '作業完成！' : '已完成 ') + n + ' / ' + hboxes.length;
+    $('#hw-meter').style.width = (n / hboxes.length * 100) + '%';
+    if (hwasAll === false && all) confetti(...centerOf($('#hw-count')), 46);
+    hwasAll = all;
+  };
+  hboxes.forEach(b => {
+    b.checked = !!hsaved[b.id];
+    b.addEventListener('change', () => {
+      hsaved[b.id] = b.checked;
+      if (b.checked) confetti(...centerOf(b.nextElementSibling), 10);
+      try { localStorage.setItem(HKEY, JSON.stringify(hsaved)); } catch(e) {}
+      hcount();
+    });
+  });
+  hcount();
 
   /* §4 creative demos */
   const adSay = {
