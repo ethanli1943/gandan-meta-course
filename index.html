@@ -508,12 +508,12 @@ input[type=range]{accent-color:var(--brand)}
   .tbl table,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
   .tbl tr{padding:12px 14px;border-bottom:1px solid var(--line)}
   .tbl tr:last-child{border-bottom:0}
-  .tbl td,.tbl td.num{border:0;padding:3px 0;display:grid;grid-template-columns:6.4em 1fr;gap:10px;white-space:normal}
-  .tbl td::before{content:attr(data-label);font-size:11.5px;letter-spacing:.04em;color:var(--ink-2);padding-top:2px}
-  .tbl td:first-child{display:block;font-weight:700;font-size:15px;padding-bottom:6px}
+  .tbl td,.tbl td.num{border:0;padding:3px 0 3px 100px;display:flow-root;white-space:normal}
+  .tbl td::before{content:attr(data-label);float:left;width:90px;margin-left:-100px;padding-top:2px;font-size:11.5px;letter-spacing:.04em;color:var(--ink-2)}
+  .tbl td:first-child{display:block;font-weight:700;font-size:15px;padding-left:0;padding-bottom:6px}
   .tbl td:first-child::before{content:none}
   .tbl td[data-label=""]::before{content:none}
-  .tbl td[data-label=""]{display:block}
+  .tbl td[data-label=""]{display:block;padding-left:0}
   .layer-tbl td:nth-child(2){white-space:normal}
 }
 
@@ -1717,6 +1717,27 @@ input[type=range]{accent-color:var(--brand)}
       <li>預算：選「行銷活動預算」＋單日預算，出價策略「最多數量」。</li>
       <li>A/B 測試不要開；特殊廣告類別不要選。</li>
     </ol>
+  </div>
+  <h3 id="l2-goals">甘丹的三個目標，各選哪個選項</h3>
+  <div class="body">
+    <p>甘丹想要的有三件事：品牌曝光、填諮詢單、開發潛在客戶（現在還沒要裝修，但以後可能會）。最後都是希望走到填諮詢單、成交。下面照老師在課堂上的選法整理，Meta 和 Google 的選項名稱不一樣。</p>
+    <div class="tbl"><table>
+      <thead><tr><th>甘丹的目標</th><th>Meta 選</th><th>Google Ads 選</th></tr></thead>
+      <tbody>
+        <tr><td data-label="甘丹的目標"><strong>① 品牌曝光</strong><br>讓沒聽過甘丹的人看到串門子影片</td><td data-label="Meta 選"><span>可以投廣告導去 YT 影片，但老師說效果比較差（YT 是外站），只建議撥一點預算 <span class="tag tag-v">待查證</span></span></td><td data-label="Google Ads 選"><span><strong>YouTube 觸及、觀看次數和參與度 → 影片觀看次數</strong>（跟老闆在 YT 按「推廣」同一種）</span></td></tr>
+        <tr><td data-label="甘丹的目標"><strong>② 填諮詢單</strong><br>官網上的諮詢單</td><td data-label="Meta 選"><span><strong>流量 → 連結頁面瀏覽次數</strong>，轉換位置選「網站」，貼表單網址</span></td><td data-label="Google Ads 選"><span>一樣投 <strong>YT 影片觀看次數</strong>。表單網址已經在 YT 說明欄，不用另外選網站流量</span></td></tr>
+        <tr><td data-label="甘丹的目標"><strong>③ 開發潛在客戶</strong><br>看更多作品、加官方 LINE</td><td data-label="Meta 選"><span>一樣用<strong>流量</strong>，網址換成官網作品頁</span></td><td data-label="Google Ads 選"><span>投 YT 廣告時，網站欄位放<strong>作品集</strong>，不要直接放表單。想在 Google 搜尋時出現，才選<strong>網站流量</strong>（關鍵字廣告）</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout"><strong>Meta 上老師只用「流量」一個目標，三件事都靠它，差別只在網址貼到哪一頁。</strong>示範時的活動名稱就是「2611_流量_填表單_預算_30」。</div>
+    <ul>
+      <li><strong>小心名字撞在一起</strong>：Meta 的「潛在顧客」（老師口中的「開發潛在客戶」）是用 Meta 內建表單收名單，跟甘丹說的「開發潛在客戶」（以後才要裝修的人）不是同一件事。③ 不要選它。</li>
+      <li>老師不選「潛在顧客」的原因：表單要做在 Meta 裡，甘丹的諮詢單在自己官網；成本高，「有一點危險」。</li>
+      <li>「互動」比潛在顧客便宜，適合私訊廣告和影片觀看。甘丹要的是看了作品、喜歡了才去填單，所以選流量。</li>
+      <li>廣告能不能放官方 LINE 的連結，老師也不確定（見 <a href="#l2s3">2.3</a>）。<span class="tag tag-v">待查證</span></li>
+      <li>① 那一格 Meta 選哪個目標，老師沒有明講名稱，是照他講解的順序判斷的。</li>
+      <li><strong>整理者補充（不是老師說的）</strong>：官網還沒裝 Meta 像素，Meta 不知道誰填了表單，所以「流量」只能幫你找會點進來的人。等網站公司裝好 GA4、GTM、像素（見 <a href="#l2s3">2.3</a>），再考慮改用「潛在顧客」並把轉換位置設成網站，直接衝填單數。</li>
+    </ul>
   </div>
   <h3>流量的成效目標：選「頁面瀏覽」</h3>
   <div class="body">
